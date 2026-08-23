@@ -2,7 +2,7 @@
 
 > 通过统一的提示词让各大模型生成 SVG 信息图，自动核验指令遵循度与渲染质量，以静态画廊形式呈现各模型的 SVG 能力差异。
 
-**在线画廊**：[https://earlzhang.github.io/SVGArena](https://earlzhang.github.io/SVGArena)
+**在线画廊**：[https://earlmind.com/SVGArena/](https://earlmind.com/SVGArena/)
 
 ## 评测方法
 
