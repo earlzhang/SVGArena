@@ -885,70 +885,62 @@ const { createApp, ref, reactive, computed, watch, nextTick, onMounted } = Vue;
 // 用法: <img v-lazy="url" class="lazy-img">
 // 行为: IntersectionObserver 监测进入视口(rootMargin 预加载) → 并发队列控制 → 加载完成后淡入
 // 并发限制: 同时最多 4 张图在加载，避免 GitHub Pages CDN 排队
-(() => {
-  const MAX_CONCURRENT = 4;
-  let activeCount = 0;
-  const queue = [];
-  const io = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      const el = entry.target;
-      if (entry.isIntersecting) {
-        io.unobserve(el);
-        enqueueLoad(el);
-      }
-    }
-  }, { rootMargin: '300px 0px' });
-
-  function enqueueLoad(el) {
-    queue.push(el);
-    pump();
-  }
-
-  function pump() {
-    while (activeCount < MAX_CONCURRENT && queue.length > 0) {
-      const el = queue.shift();
-      activeCount++;
-      loadImg(el);
+const MAX_CONCURRENT = 4;
+let lazyActiveCount = 0;
+const lazyQueue = [];
+const lazyIO = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    const el = entry.target;
+    if (entry.isIntersecting) {
+      lazyIO.unobserve(el);
+      lazyQueue.push(el);
+      lazyPump();
     }
   }
+}, { rootMargin: '300px 0px' });
 
-  function loadImg(el) {
-    const src = el.getAttribute('data-src');
-    if (!src) { activeCount--; pump(); return; }
-    const img = new Image();
-    img.onload = () => {
-      el.src = src;
-      el.classList.add('loaded');
-      activeCount--;
-      pump();
-    };
-    img.onerror = () => {
-      activeCount--;
-      pump();
-    };
-    img.src = src;
+function lazyPump() {
+  while (lazyActiveCount < MAX_CONCURRENT && lazyQueue.length > 0) {
+    const el = lazyQueue.shift();
+    lazyActiveCount++;
+    lazyLoadImg(el);
   }
+}
 
-  // 注册为全局指令
-  window.__lazyIO = io;
-  Vue.directive('lazy', {
-    mounted(el, binding) {
-      el.classList.add('lazy-img');
+function lazyLoadImg(el) {
+  const src = el.getAttribute('data-src');
+  if (!src) { lazyActiveCount--; lazyPump(); return; }
+  const img = new Image();
+  img.onload = () => {
+    el.src = src;
+    el.classList.add('loaded');
+    lazyActiveCount--;
+    lazyPump();
+  };
+  img.onerror = () => {
+    lazyActiveCount--;
+    lazyPump();
+  };
+  img.src = src;
+}
+
+const lazyDirective = {
+  mounted(el, binding) {
+    el.classList.add('lazy-img');
+    el.setAttribute('data-src', binding.value);
+    lazyIO.observe(el);
+  },
+  updated(el, binding) {
+    if (binding.value !== el.getAttribute('data-src')) {
+      el.classList.remove('loaded');
       el.setAttribute('data-src', binding.value);
-      io.observe(el);
-    },
-    updated(el, binding) {
-      if (binding.value !== el.getAttribute('data-src')) {
-        el.classList.remove('loaded');
-        el.setAttribute('data-src', binding.value);
-        io.observe(el);
-      }
-    },
-    unmounted(el) {
-      io.unobserve(el);
-    },
-  });
-})();
+      lazyIO.observe(el);
+    }
+  },
+  unmounted(el) {
+    lazyIO.unobserve(el);
+  },
+};
 
 createApp({
   setup() {
@@ -1316,7 +1308,7 @@ createApp({
       openLightbox, closeLightbox, prevRun, nextRun,
     };
   }
-}).mount('#app');
+}).directive('lazy', lazyDirective).mount('#app');
 </script>
 </body>
 </html>
