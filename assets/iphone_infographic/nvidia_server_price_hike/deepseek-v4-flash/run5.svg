@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844" font-family="PingFang SC, Hiragino Sans GB, Heiti SC, Songti SC">
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FEF2F3"/>
+      <stop offset="1" stop-color="#FFF8F5"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="390" height="844" fill="#F6F7FB"/>
+  <circle cx="370" cy="70" r="100" fill="#EDF2FF" opacity="0.5"/>
+  <circle cx="18" cy="820" r="80" fill="#FFF0F1" opacity="0.4"/>
+
+  <!-- Header -->
+  <rect x="16" y="24" width="58" height="24" rx="6" fill="#C93A4B"/>
+  <text x="45" y="41" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="bold">财联社</text>
+  <text x="84" y="41" fill="#64748B" font-size="12">8月23日讯</text>
+  <text x="374" y="41" text-anchor="end" fill="#94A3B8" font-size="11">编辑 史正丞</text>
+
+  <text x="16" y="78" font-size="22" font-weight="bold" fill="#0F1B33">英伟达服务器传出涨价消息</text>
+  <text x="17" y="102" font-size="14" font-weight="bold" fill="#D64550">涨幅“很多情况下超过15%”</text>
+
+  <!-- Hero 核心信息 -->
+  <rect x="16" y="118" width="358" height="132" rx="16" fill="url(#heroBg)" stroke="#F1D8DC" stroke-width="1"/>
+  <path d="M280 200 L316 166" stroke="#D64550" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="318,164 311,177 305,169" fill="#D64550"/>
+
+  <text x="32" y="146" font-size="11" font-weight="bold" fill="#C93A4B">核心信息 · 涨价</text>
+  <text x="32" y="174" font-size="14" fill="#334155">内存（DRAM）芯片成本飙升，最大客户已被告知</text>
+  <text x="32" y="212" font-size="34" font-weight="bold" fill="#D64550">涨幅超过15%</text>
+  <text x="32" y="236" font-size="11.5" fill="#64748B">明年年初起 · Vera Rubin / Grace Blackwell 服务器普遍提价</text>
+
+  <!-- 服务器报价 -->
+  <rect x="16" y="266" width="358" height="164" rx="16" fill="#FFFFFF" stroke="#E4E7F0" stroke-width="1"/>
+  <text x="36" y="298" font-size="15" font-weight="bold" fill="#0F1B33">AI服务器报价（美元/台）</text>
+
+  <text x="36" y="326" font-size="12" font-weight="bold" fill="#334155">GB200 NVL72</text>
+  <text x="330" y="326" text-anchor="end" font-size="11" fill="#64748B">280万–340万美元</text>
+  <rect x="36" y="334" width="266" height="12" rx="6" fill="#EDF0F5"/>
+  <rect x="36" y="334" width="129" height="12" rx="6" fill="#818CF8"/>
+
+  <text x="36" y="372" font-size="12" font-weight="bold" fill="#334155">VR200 NVL72</text>
+  <text x="330" y="372" text-anchor="end" font-size="11" fill="#64748B">500万–700万美元</text>
+  <rect x="36" y="380" width="266" height="12" rx="6" fill="#EDF0F5"/>
+  <rect x="36" y="380" width="266" height="12" rx="6" fill="#F472B6"/>
+
+  <text x="36" y="418" font-size="11" font-weight="bold" fill="#D64550">哪怕15%涨幅≈每台多付大几十万/近百万美元</text>
+
+  <!-- 财报聚焦 -->
+  <rect x="16" y="446" width="358" height="176" rx="16" fill="#FFFFFF" stroke="#E4E7F0" stroke-width="1"/>
+  <text x="36" y="474" font-size="15" font-weight="bold" fill="#0F1B33">财报聚焦：毛利率是关注点</text>
+
+  <text x="36" y="500" font-size="11" fill="#64748B">上季营收（截至4月26日）</text>
+  <text x="36" y="526" font-size="22" font-weight="bold" fill="#0F1B33">816亿美元</text>
+
+  <text x="190" y="500" font-size="11" fill="#64748B">上季毛利率</text>
+  <text x="190" y="526" font-size="22" font-weight="bold" fill="#0F1B33">75%</text>
+
+  <text x="36" y="548" font-size="10" fill="#94A3B8">下季毛利率指引：74.9%–75%</text>
+  <text x="199" y="556" text-anchor="middle" font-size="10" fill="#64748B">60.5%</text>
+  <text x="239" y="556" text-anchor="middle" font-size="10" fill="#059669">75%</text>
+
+  <rect x="36" y="566" width="270" height="12" rx="6" fill="#E9EEF5"/>
+  <rect x="36" y="566" width="203" height="12" rx="6" fill="#34D399"/>
+  <line x1="199" y1="562" x2="199" y2="582" stroke="#94A3B8" stroke-width="1.5"/>
+
+  <text x="36" y="604" font-size="12" font-weight="bold" fill="#D64550">下周三美股盘后发财报：存储涨价会否侵蚀利润率？</text>
+
+  <!-- 连锁反应 -->
+  <rect x="16" y="638" width="358" height="148" rx="16" fill="#FFFFFF" stroke="#E4E7F0" stroke-width="1"/>
+  <text x="36" y="666" font-size="15" font-weight="bold" fill="#0F1B33">连锁反应：从显卡到行业竞争</text>
+
+  <circle cx="46" cy="692" r="3" fill="#C93A4B"/>
+  <text x="60" y="696" font-size="12" fill="#334155">消费市场已现：RTX 5080 一个月</text>
+  <text x="60" y="714" font-size="13" font-weight="bold" fill="#D64550">¥8000 → ¥1.2万（+50%）</text>
+
+  <circle cx="46" cy="740" r="3" fill="#C93A4B"/>
+  <text x="60" y="744" font-size="12" fill="#334155">苹果、高通等科技公司已因芯片短缺提价</text>
+
+  <circle cx="46" cy="768" r="3" fill="#C93A4B"/>
+  <text x="60" y="772" font-size="12" fill="#334155">云厂商自研加速；供货看三星/SK海力士/美光</text>
+
+  <!-- Footer -->
+  <line x1="36" y1="808" x2="354" y2="808" stroke="#E5E8F0" stroke-width="1"/>
+  <text x="36" y="832" font-size="11" fill="#94A3B8">来源：财联社 8月23日讯（编辑 史正丞）</text>
+  <text x="354" y="832" text-anchor="end" font-size="11" fill="#C93A4B" font-weight="bold">财联社</text>
+</svg>
