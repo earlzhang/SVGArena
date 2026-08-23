@@ -1,0 +1,27 @@
+title: iPhone 单屏信息图
+description: >
+  用 SVG 可视化信息图呈现文章核心信息，需适配 iPhone 单屏显示、
+  仅用 macOS 内置中文字体、浅色系底色风格。SVG 直接输出，不要任何额外说明。
+
+prompt: prompt.md
+
+# 约束配置 —— 驱动指令遵循度检测器，新增 task 改这里即可
+constraints:
+  pure_svg_output: true       # 响应必须恰好以 <svg 开头、</svg> 结尾，无围栏/前言/后记
+
+  viewport:
+    width: 390
+    height: 844               # iPhone 全面屏逻辑分辨率
+    aspect_range: [2.10, 2.20]  # h/w 容差范围，覆盖 iPhone 全面屏各代（2.16~2.17）
+
+  font_policy: macos_builtin_cjk   # font-family 只允许 macOS 内置中文字体 + 通用族/西文 fallback
+
+  background:
+    mode: light
+    min_luminance: 0.75       # PNG 最外 5% 边框区域众数色亮度下限
+
+  min_effective_font_size: 11  # 归一化到 390 宽后的最小等效字号 (px)
+
+# 内容清单 —— 省略则自动扫描 contents/*.md 并读 front matter
+contents:
+  - id: nvidia_server_price_hike
