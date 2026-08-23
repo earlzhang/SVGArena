@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844" style="font-family: 'PingFang SC', 'Hiragino Sans GB', 'STHeiti';">
+<defs>
+  <linearGradient id="bgGradient" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#EAF1FA"/>
+    <stop offset="100%" stop-color="#F5F7FB"/>
+  </linearGradient>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#10203A" flood-opacity="0.06"/>
+  </filter>
+</defs>
+
+<rect width="390" height="844" fill="url(#bgGradient)"/>
+<circle cx="390" cy="30" r="70" fill="#E2ECFB" opacity="0.6"/>
+<circle cx="-20" cy="820" r="60" fill="#E7EFFC" opacity="0.5"/>
+
+<!-- 头部 -->
+<rect x="20" y="32" width="48" height="20" rx="10" fill="#E11D48"/>
+<text x="44" y="46" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="600">快讯</text>
+<text x="76" y="46" font-size="11" fill="#9AA5B5">财联社8月23日讯 · 编辑 史正丞</text>
+<text x="20" y="78" font-size="23" font-weight="700" fill="#111827">英伟达服务器涨价来袭</text>
+<text x="20" y="105" font-size="16" font-weight="600" fill="#E11D48">涨幅“很多情况下超过15%”</text>
+
+<!-- 核心信息 1 -->
+<rect x="20" y="124" width="350" height="60" rx="12" fill="#FFFFFF" stroke="#E4E9F2" filter="url(#shadow)"/>
+<circle cx="41" cy="146" r="10" fill="#EFF6FF"/>
+<text x="41" y="150" text-anchor="middle" font-size="11" fill="#2563EB" font-weight="600">1</text>
+<text x="58" y="145" font-size="12.5" fill="#374151">明年初起，Vera Rubin、Grace Blackwell</text>
+<text x="58" y="162" font-size="12.5" fill="#374151">等服务器将普遍提价</text>
+
+<!-- 核心信息 2 -->
+<rect x="20" y="192" width="350" height="60" rx="12" fill="#FFFFFF" stroke="#E4E9F2" filter="url(#shadow)"/>
+<circle cx="41" cy="214" r="10" fill="#FEF2F2"/>
+<text x="41" y="218" text-anchor="middle" font-size="11" fill="#DC2626" font-weight="600">2</text>
+<text x="58" y="213" font-size="12.5" fill="#374151">英伟达下周发布财报，市场关注存储涨价</text>
+<text x="58" y="230" font-size="12.5" fill="#374151">是否侵蚀算力芯片龙头利润率</text>
+
+<!-- 本轮涨价详情 -->
+<rect x="20" y="278" width="3.5" height="16" rx="1.75" fill="#2563EB"/>
+<text x="31" y="291" font-size="13" font-weight="600" fill="#1F2937">本轮涨价详情</text>
+
+<rect x="20" y="302" width="350" height="104" rx="12" fill="#FFFFFF" stroke="#E4E9F2" filter="url(#shadow)"/>
+<line x1="32" y1="338" x2="368" y2="338" stroke="#F0F3F8"/>
+<line x1="32" y1="360" x2="368" y2="360" stroke="#F0F3F8"/>
+<line x1="32" y1="382" x2="368" y2="382" stroke="#F0F3F8"/>
+
+<text x="32" y="326" font-size="12" fill="#9AA5B5">时间</text>
+<text x="112" y="326" font-size="12.5" fill="#1F2937">明年年初出货的系统</text>
+
+<text x="32" y="348" font-size="12" fill="#9AA5B5">产品</text>
+<text x="112" y="348" font-size="12.5" fill="#1F2937">Vera Rubin / Grace Blackwell 组合</text>
+
+<text x="32" y="370" font-size="12" fill="#9AA5B5">涨幅</text>
+<text x="112" y="370" font-size="12.5" font-weight="600" fill="#DC2626">很多情况下超15%</text>
+
+<text x="32" y="392" font-size="12" fill="#9AA5B5">客户</text>
+<text x="112" y="392" font-size="12.5" fill="#1F2937">微软、谷歌、甲骨文等</text>
+
+<!-- 价格参考 -->
+<rect x="20" y="430" width="3.5" height="16" rx="1.75" fill="#2563EB"/>
+<text x="31" y="443" font-size="13" font-weight="600" fill="#1F2937">价格参考</text>
+
+<rect x="20" y="452" width="350" height="112" rx="12" fill="#FFFFFF" stroke="#E4E9F2" filter="url(#shadow)"/>
+<line x1="32" y1="494" x2="368" y2="494" stroke="#F0F3F8"/>
+<line x1="32" y1="534" x2="368" y2="534" stroke="#F0F3F8"/>
+
+<text x="32" y="476" font-size="11" fill="#9AA5B5">RTX 5080 · 近1个月</text>
+<text x="348" y="476" text-anchor="end" font-size="14" font-weight="700" fill="#DC2626">¥8,000 → ¥12,000 <tspan font-size="10" font-weight="600">+50%</tspan></text>
+
+<text x="32" y="516" font-size="11" fill="#9AA5B5">GB200 NVL72 · 单台机架</text>
+<text x="348" y="516" text-anchor="end" font-size="14" font-weight="700" fill="#1F2937">280万–340万美元</text>
+
+<text x="32" y="554" font-size="11" fill="#9AA5B5">VR200 NVL72 · 系统询价</text>
+<text x="348" y="554" text-anchor="end" font-size="14" font-weight="700" fill="#1F2937">500万–700万美元</text>
+
+<!-- 财报前瞻 -->
+<rect x="20" y="588" width="3.5" height="16" rx="1.75" fill="#2563EB"/>
+<text x="31" y="601" font-size="13" font-weight="600" fill="#1F2937">财报前瞻</text>
+
+<rect x="20" y="610" width="350" height="92" rx="12" fill="#FFFFFF" stroke="#E4E9F2" filter="url(#shadow)"/>
+
+<circle cx="76" cy="656" r="28" fill="none" stroke="#EDF2F8" stroke-width="7"/>
+<circle cx="76" cy="656" r="28" fill="none" stroke="#2563EB" stroke-width="7" stroke-linecap="round" stroke-dasharray="132 176" transform="rotate(-90 76 656)"/>
+<text x="76" y="661" text-anchor="middle" font-size="16" font-weight="700" fill="#2563EB">75%</text>
+<text x="76" y="692" text-anchor="middle" font-size="9" fill="#9AA5B5">毛利率</text>
+
+<text x="118" y="636" font-size="12.5" font-weight="600" fill="#1F2937">最近季度毛利率维持 75% 左右</text>
+<text x="118" y="655" font-size="11" fill="#6B7280">去年同期 60.5% · 本财季预期 74.9%–75%</text>
+<text x="118" y="674" font-size="11" font-weight="600" fill="#DC2626">存储涨价会否侵蚀利润率？</text>
+<text x="118" y="692" font-size="11" fill="#6B7280">财报：下周三美股盘后</text>
+
+<!-- 行业影响 -->
+<rect x="20" y="726" width="3.5" height="16" rx="1.75" fill="#2563EB"/>
+<text x="31" y="739" font-size="13" font-weight="600" fill="#1F2937">行业影响</text>
+
+<rect x="20" y="746" width="350" height="68" rx="12" fill="#FFFFFF" stroke="#E4E9F2" filter="url(#shadow)"/>
+<text x="32" y="770" font-size="12.5" fill="#374151">存储涨价推高AI服务器价格，助推云巨头自研芯片</text>
+<text x="32" y="792" font-size="11" fill="#6B7280">亚马逊、微软、谷歌、Meta 均已布局；挑战者看三星/SK海力士/美光</text>
+</svg>
