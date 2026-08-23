@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4F8F5"/>
+      <stop offset="100%" stop-color="#E8F0EA"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E3D32"/>
+      <stop offset="100%" stop-color="#2A5644"/>
+    </linearGradient>
+    <linearGradient id="rise" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#E24A3C"/>
+      <stop offset="100%" stop-color="#F07A4A"/>
+    </linearGradient>
+    <filter id="s" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#1A3328" flood-opacity="0.08"/>
+    </filter>
+    <filter id="s2" x="-6%" y="-6%" width="112%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#1A3328" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <rect width="390" height="844" fill="url(#bg)"/>
+  <rect width="390" height="6" fill="#76B900"/>
+
+  <text x="20" y="28" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="11" fill="#5C7268" font-weight="500">财联社 · 8月23日 · 史正丞</text>
+  <text x="20" y="54" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="20" fill="#1A2F28" font-weight="600">英伟达服务器传出涨价</text>
+  <text x="20" y="78" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="13" fill="#3D6B52">内存成本飙升 · AI机柜将普遍提价</text>
+
+  <rect x="16" y="94" width="358" height="148" rx="16" fill="url(#hero)" filter="url(#s)"/>
+  <text x="32" y="118" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="11" fill="#A8C9B4" font-weight="500">很多情况下涨幅超过</text>
+  <text x="32" y="178" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="58" fill="#FFFFFF" font-weight="600">15%</text>
+  <polygon points="168,132 180,112 192,132" fill="#76B900"/>
+  <text x="200" y="130" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="13" fill="#76B900" font-weight="600">上调</text>
+  <text x="200" y="162" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="12" fill="#D5E8DC">适用于明年年初出货系统</text>
+  <text x="200" y="182" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="11" fill="#A8C9B4">已通知微软 / 谷歌 / 甲骨文等</text>
+  <text x="200" y="214" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="11" fill="#8FBA9E">最大客户代工厂近期已发函</text>
+  <rect x="32" y="198" width="86" height="26" rx="13" fill="#76B900"/>
+  <text x="75" y="215" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#1A2F28" font-weight="600" text-anchor="middle">Vera Rubin</text>
+  <rect x="122" y="198" width="70" height="26" rx="13" fill="rgba(255,255,255,0.12)"/>
+  <text x="157" y="215" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#E8F4EC" font-weight="500" text-anchor="middle">Blackwell</text>
+
+  <text x="20" y="266" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="12" fill="#1A2F28" font-weight="600">旗舰机柜报价</text>
+  <text x="370" y="266" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#7A9086" text-anchor="end">动辄数百万美元</text>
+
+  <rect x="16" y="276" width="174" height="108" rx="14" fill="#FFFFFF" filter="url(#s2)"/>
+  <rect x="16" y="276" width="4" height="108" rx="2" fill="#2B6B8A"/>
+  <text x="32" y="298" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#5C7268">Blackwell · NVL72</text>
+  <text x="32" y="318" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="13" fill="#1A2F28" font-weight="600">GB200</text>
+  <text x="32" y="348" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="18" fill="#2B6B8A" font-weight="600">280–340万</text>
+  <text x="32" y="368" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#8A9B93">美元 / 台</text>
+
+  <rect x="200" y="276" width="174" height="108" rx="14" fill="#FFFFFF" filter="url(#s2)"/>
+  <rect x="200" y="276" width="4" height="108" rx="2" fill="#76B900"/>
+  <text x="216" y="298" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#5C7268">Vera Rubin · NVL72</text>
+  <text x="216" y="318" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="13" fill="#1A2F28" font-weight="600">VR200</text>
+  <text x="216" y="348" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="18" fill="#3D8A52" font-weight="600">500–700万</text>
+  <text x="216" y="368" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#8A9B93">美元 / 台 · 出货前询价</text>
+
+  <rect x="16" y="394" width="358" height="44" rx="12" fill="#FFF4F1"/>
+  <text x="195" y="421" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="12" fill="#C44536" font-weight="500" text-anchor="middle">涨 15% ≈ 单台额外开销大几十万至近百万美元</text>
+
+  <rect x="16" y="448" width="358" height="72" rx="14" fill="#FFFFFF" filter="url(#s2)"/>
+  <text x="32" y="470" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#5C7268">消费市场已先涨 · 次旗舰显卡</text>
+  <text x="32" y="494" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="14" fill="#1A2F28" font-weight="600">RTX 5080</text>
+  <text x="128" y="494" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="14" fill="#8A9B93">8000元</text>
+  <path d="M186 488 h36" stroke="#E24A3C" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="220,484 230,488 220,492" fill="#E24A3C"/>
+  <text x="238" y="494" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="14" fill="#E24A3C" font-weight="600">1.2万元</text>
+  <text x="338" y="512" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#C44536" text-anchor="end">1个月 +50%</text>
+  <rect x="32" y="504" width="120" height="6" rx="3" fill="#EEF2EF"/>
+  <rect x="32" y="504" width="80" height="6" rx="3" fill="url(#rise)"/>
+
+  <text x="20" y="546" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="12" fill="#1A2F28" font-weight="600">两条主线</text>
+
+  <rect x="16" y="556" width="174" height="146" rx="14" fill="#FFFFFF" filter="url(#s2)"/>
+  <rect x="32" y="572" width="22" height="22" rx="6" fill="#EEF6E8"/>
+  <rect x="36" y="576" width="14" height="14" rx="2" fill="none" stroke="#76B900" stroke-width="1.6"/>
+  <rect x="39" y="579" width="8" height="8" rx="1" fill="#76B900" opacity="0.35"/>
+  <text x="60" y="588" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="12" fill="#1A2F28" font-weight="600">涨价主因</text>
+  <text x="32" y="618" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="12" fill="#3D6B52" font-weight="500">DRAM 成本飙升</text>
+  <text x="32" y="640" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10.5" fill="#5C7268">AI芯片实际性能高度</text>
+  <text x="32" y="656" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10.5" fill="#5C7268">依赖配套内存容量</text>
+  <text x="32" y="680" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#8A9B93">三星 · SK海力士 · 美光</text>
+
+  <rect x="200" y="556" width="174" height="146" rx="14" fill="#FFFFFF" filter="url(#s2)"/>
+  <rect x="216" y="572" width="22" height="22" rx="6" fill="#EAF3F7"/>
+  <circle cx="227" cy="583" r="7" fill="none" stroke="#2B6B8A" stroke-width="1.6"/>
+  <path d="M227 579 v5 l3.5 2" fill="none" stroke="#2B6B8A" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="244" y="588" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="12" fill="#1A2F28" font-weight="600">下周财报</text>
+  <text x="216" y="618" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="12" fill="#2B6B8A" font-weight="500">毛利率约 75%</text>
+  <text x="216" y="640" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10.5" fill="#5C7268">Q1营收 816亿美元</text>
+  <text x="216" y="656" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10.5" fill="#5C7268">去年同期仅 60.5%</text>
+  <text x="216" y="680" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#8A9B93">关注存储涨价侵蚀利润</text>
+
+  <rect x="16" y="712" width="358" height="96" rx="14" fill="#FFFFFF" filter="url(#s2)"/>
+  <text x="32" y="736" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="12" fill="#1A2F28" font-weight="600">连锁影响</text>
+  <text x="32" y="758" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="11" fill="#3D5348">云巨头加速自研芯片 · 但软件生态仍高度依赖英伟达</text>
+  <rect x="32" y="770" width="44" height="22" rx="11" fill="#F0F5F1"/>
+  <text x="54" y="785" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#3D6B52" text-anchor="middle">亚马逊</text>
+  <rect x="80" y="770" width="36" height="22" rx="11" fill="#F0F5F1"/>
+  <text x="98" y="785" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#3D6B52" text-anchor="middle">微软</text>
+  <rect x="120" y="770" width="36" height="22" rx="11" fill="#F0F5F1"/>
+  <text x="138" y="785" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#3D6B52" text-anchor="middle">谷歌</text>
+  <rect x="160" y="770" width="36" height="22" rx="11" fill="#F0F5F1"/>
+  <text x="178" y="785" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#3D6B52" text-anchor="middle">Meta</text>
+  <text x="358" y="785" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#8A9B93" text-anchor="end">挑战者仍受内存供给约束</text>
+
+  <text x="195" y="830" font-family="PingFang SC, Heiti SC, STHeiti, sans-serif" font-size="10" fill="#9AADA3" text-anchor="middle">涨幅因芯片型号与内存配置而异 · 仅供信息可视化</text>
+</svg>
