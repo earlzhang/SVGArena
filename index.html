@@ -884,46 +884,22 @@ const { createApp, ref, reactive, computed, watch, nextTick, onMounted } = Vue;
 
 // ===== 懒加载指令 v-lazy =====
 // 用法: <img v-lazy="url" class="lazy-img">
-// 行为: IntersectionObserver 监测进入视口(rootMargin 预加载) → 并发队列控制 → 加载完成后淡入
-// 并发限制: 同时最多 4 张图在加载，避免 GitHub Pages CDN 排队
-const MAX_CONCURRENT = 4;
-let lazyActiveCount = 0;
-const lazyQueue = [];
+// 行为: IntersectionObserver 监测进入视口(rootMargin 预加载) → 直接设置 src，浏览器原生并发管理(HTTP/2 多路复用)
+// 不再用 JS 并发队列: 浏览器在 HTTP/2 下可多路复用几十个请求，JS 队列(MAX_CONCURRENT=4)反而成为瓶颈，
+// 且 new Image() 预加载需等完整下载才释放 slot，视觉上呈现"一张接一张"的串行感。
 const lazyIO = new IntersectionObserver((entries) => {
   for (const entry of entries) {
     const el = entry.target;
     if (entry.isIntersecting) {
       lazyIO.unobserve(el);
-      lazyQueue.push(el);
-      lazyPump();
+      const src = el.getAttribute('data-src');
+      if (!src) continue;
+      el.onload = () => el.classList.add('loaded');
+      el.onerror = () => el.classList.add('loaded'); // 失败也淡入，避免永久骨架
+      el.src = src;
     }
   }
-}, { rootMargin: '300px 0px' });
-
-function lazyPump() {
-  while (lazyActiveCount < MAX_CONCURRENT && lazyQueue.length > 0) {
-    const el = lazyQueue.shift();
-    lazyActiveCount++;
-    lazyLoadImg(el);
-  }
-}
-
-function lazyLoadImg(el) {
-  const src = el.getAttribute('data-src');
-  if (!src) { lazyActiveCount--; lazyPump(); return; }
-  const img = new Image();
-  img.onload = () => {
-    el.src = src;
-    el.classList.add('loaded');
-    lazyActiveCount--;
-    lazyPump();
-  };
-  img.onerror = () => {
-    lazyActiveCount--;
-    lazyPump();
-  };
-  img.src = src;
-}
+}, { rootMargin: '600px 0px' });
 
 const lazyDirective = {
   mounted(el, binding) {
