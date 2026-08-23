@@ -6,10 +6,6 @@
 <title>SVGArena — 大模型 SVG 信息图能力评测</title>
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@3.5.38/dist/vue.global.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style type="text/tailwindcss">
 @theme {
   --color-ink: #0E1526;
@@ -18,8 +14,8 @@
   --color-hairline: #E4E6EE;
   --color-cobalt: #2B4EFF;
   --color-cobalt-deep: #1E3BCC;
-  --font-display: "Noto Serif SC", "Songti SC", serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Songti SC", "STSong", "Noto Serif SC", serif;
+  --font-mono: "Menlo", "JetBrains Mono", ui-monospace, monospace;
 }
 </style>
 <style>
@@ -31,7 +27,7 @@
 
   /* ===== Wordmark:SVG 实心 + ARENA 描边绘制动画 ===== */
   .logo-svg text {
-    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-family: "Songti SC", "STSong", serif;
     font-weight: 900;
     font-size: 26px;
     letter-spacing: 1px;
@@ -1124,12 +1120,30 @@ createApp({
     const CHART_PALETTE = ['#2B4EFF', '#0EA5E9', '#16A34A', '#D97706', '#DC2626', '#7C3AED', '#DB2777', '#64748B', '#0D9488', '#B45309'];
     const CHART_FONT = '"JetBrains Mono", ui-monospace, -apple-system, "PingFang SC", sans-serif';
 
+    // ECharts 延迟加载：只在首次进入榜单视图时动态加载
+    let echartsLoaded = false;
+    let echartsLoading = null;
+    function loadECharts() {
+      if (echartsLoaded) return Promise.resolve();
+      if (echartsLoading) return echartsLoading;
+      echartsLoading = new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js';
+        s.onload = () => { echartsLoaded = true; resolve(); };
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+      return echartsLoading;
+    }
+
     function renderCharts() {
       if (view.value !== 'ranking') return;
-      nextTick(() => {
-        renderTotalChart();
-        renderComplianceChart();
-      });
+      loadECharts().then(() => {
+        nextTick(() => {
+          renderTotalChart();
+          renderComplianceChart();
+        });
+      }).catch(() => {});
     }
 
     function renderTotalChart() {
