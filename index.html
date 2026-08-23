@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVGArena — 大模型 SVG 信息图能力评测</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@3.5.38/dist/vue.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style type="text/tailwindcss">
+@theme {
+  --color-ink: #0E1526;
+  --color-ink-soft: #1B2540;
+  --color-paper: #F5F6F9;
+  --color-hairline: #E4E6EE;
+  --color-cobalt: #2B4EFF;
+  --color-cobalt-deep: #1E3BCC;
+  --font-display: "Noto Serif SC", "Songti SC", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+</style>
+<style>
+  body {
+    font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+    background: #F5F6F9;
+  }
+  ::selection { background: #2B4EFF; color: #fff; }
+
+  /* ===== Wordmark:SVG 实心 + ARENA 描边绘制动画 ===== */
+  .logo-svg text {
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: 1px;
+  }
+  .logo-solid { fill: #2B4EFF; }
+  .logo-stroke {
+    fill: transparent;
+    stroke: rgba(255,255,255,0.92);
+    stroke-width: 0.9;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .logo-stroke {
+      stroke-dasharray: 320;
+      stroke-dashoffset: 320;
+      animation: logoDraw 1.5s cubic-bezier(.6,0,.3,1) forwards .15s,
+                 logoFill .5s ease forwards 1.5s;
+    }
+    @keyframes logoDraw { to { stroke-dashoffset: 0; } }
+    @keyframes logoFill { to { fill: #fff; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-stroke { fill: #fff; }
+  }
+
+  /* ===== iPhone 外框 ===== */
+  .iphone-frame {
+    border-radius: 20px;
+    border: 2px solid #141414;
+    overflow: hidden;
+    position: relative;
+    background: #f5f5f5;
+    box-shadow: 0 1px 2px rgba(14,21,38,0.08), 0 4px 14px rgba(14,21,38,0.06);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .group:hover .iphone-frame {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 4px rgba(14,21,38,0.10), 0 10px 24px rgba(14,21,38,0.14);
+  }
+  .iphone-frame::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 16px;
+    background: #141414;
+    border-radius: 10px;
+    z-index: 10;
+  }
+  .iphone-screen {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  .iphone-screen img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .score-block {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    display: inline-block;
+    box-shadow: inset 0 0 0 1px rgba(14,21,38,0.12);
+  }
+  .badge {
+    font-size: 9px;
+    padding: 1.5px 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    box-shadow: 0 1px 3px rgba(14,21,38,0.15);
+  }
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,14,26,0.88);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  pre.svg-code {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    line-height: 1.4;
+    max-height: 70vh;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  /* 数据数字统一等宽 */
+  .num { font-family: "JetBrains Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+  /* 榜单排名角标 */
+  .rank-chip {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 11px;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: #EEF0F6;
+    color: #5B6478;
+  }
+  .rank-chip.top {
+    background: #0E1526;
+    color: #fff;
+  }
+
+  /* 自定义 tooltip —— hover 立即显示，不依赖浏览器原生 title 延迟 */
+  .tip {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dashed transparent;
+  }
+  .tip:hover {
+    border-bottom-color: #9ca3af;
+  }
+  .tip::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    background: #0E1526;
+    color: #F5F6F9;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: normal;
+    width: max-content;
+    max-width: 260px;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 200;
+    box-shadow: 0 4px 14px rgba(14,21,38,0.35);
+  }
+  .tip:hover::after {
+    opacity: 1;
+  }
+  .tip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: #0E1526;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 200;
+  }
+  .tip:hover::before {
+    opacity: 1;
+  }
+
+  /* 向下浮现的 tooltip（用于违规徽标，避免被卡片顶部截断） */
+  .tip-b {
+    position: relative;
+    cursor: help;
+  }
+  .tip-b::after {
+    content: attr(data-tip);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: translateY(5px);
+    background: #0E1526;
+    color: #F5F6F9;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: normal;
+    width: max-content;
+    max-width: 220px;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 200;
+    box-shadow: 0 4px 14px rgba(14,21,38,0.35);
+  }
+  .tip-b:hover::after {
+    opacity: 1;
+  }
+
+  /* 横向滚动条细化 */
+  .runs-scroll::-webkit-scrollbar { height: 6px; }
+  .runs-scroll::-webkit-scrollbar-thumb { background: #D4D8E2; border-radius: 3px; }
+  .runs-scroll::-webkit-scrollbar-track { background: transparent; }
+  .code-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+  .code-scroll::-webkit-scrollbar-thumb { background: rgba(140,150,175,0.35); border-radius: 3px; }
+  .code-scroll::-webkit-scrollbar-track { background: transparent; }
+
+  /* ===== 控制栏控件组：浮动标签 + 自定义 chevron ===== */
+  .ctl-group {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 8px 5px 11px;
+    border: 1px solid #E4E6EE;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(14,21,38,0.04);
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .ctl-group:hover { border-color: #C3C9D8; }
+  .ctl-group:focus-within {
+    border-color: #2B4EFF;
+    box-shadow: 0 0 0 3px rgba(43,78,255,0.12);
+  }
+  .ctl-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #9AA1B5;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .ctl-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0E1526;
+    padding: 3px 20px 3px 0;
+    outline: none;
+    cursor: pointer;
+    max-width: 280px;
+  }
+  .ctl-chevron {
+    position: absolute;
+    right: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    color: #9AA1B5;
+    pointer-events: none;
+  }
+
+  /* ===== iOS 风格开关 ===== */
+  .switch { position: relative; width: 34px; height: 20px; flex: none; }
+  .switch input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .switch-track {
+    position: absolute;
+    inset: 0;
+    background: #D8DCE6;
+    border-radius: 999px;
+    transition: background .18s ease;
+  }
+  .switch-track::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(14,21,38,0.28);
+    transition: transform .18s ease;
+  }
+  .switch input:checked + .switch-track { background: #2B4EFF; }
+  .switch input:checked + .switch-track::after { transform: translateX(14px); }
+
+  /* 面板展开过渡 */
+  .drop-enter-active, .drop-leave-active { transition: opacity .22s ease, transform .22s ease; }
+  .drop-enter-from, .drop-leave-to { opacity: 0; transform: translateY(-8px); }
+</style>
+</head>
+<body class="text-gray-900">
+<div id="app" class="min-h-screen flex flex-col">
+
+  <!-- 顶部导航：墨蓝展厅横带 -->
+  <header class="bg-ink sticky top-0 z-20 shadow-lg shadow-ink/20">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <svg class="logo-svg h-8 w-auto" viewBox="0 0 218 34" aria-label="SVGArena">
+          <text x="0" y="26" class="logo-solid">SVG</text>
+          <text x="66" y="26" class="logo-stroke">ARENA</text>
+        </svg>
+        <span class="hidden md:inline text-[11px] text-white/40 tracking-widest border-l border-white/15 pl-3">大模型 SVG 信息图能力评测</span>
+      </div>
+      <nav class="flex gap-1 text-sm">
+        <button v-for="v in ['gallery', 'ranking', 'about']" :key="v"
+          @click="view = v"
+          :class="view === v ? 'bg-cobalt text-white shadow-md shadow-cobalt/40' : 'text-white/55 hover:text-white hover:bg-white/10'"
+          class="px-3.5 py-1.5 rounded-lg transition font-medium">
+          {{ {gallery: '画廊', ranking: '榜单', about: '关于'}[v] }}
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 画廊视图 -->
+  <div v-if="view === 'gallery'" class="max-w-7xl mx-auto px-4 py-5 w-full flex-1">
+
+    <!-- 引言条 -->
+    <div class="mb-5 flex items-end justify-between flex-wrap gap-3">
+      <div>
+        <h2 class="font-display font-black text-2xl text-ink tracking-tight">同一道题目，五种答卷</h2>
+        <p class="text-sm text-gray-500 mt-1">统一提示词 · 每模型 5 次采样 · 自动核验指令遵循与渲染质量</p>
+      </div>
+      <div class="num text-xs text-gray-400 flex gap-4">
+        <span><b class="text-ink text-sm">{{ heroStats.models }}</b> 模型</span>
+        <span><b class="text-ink text-sm">{{ heroStats.runs }}</b> 次生成</span>
+        <span><b class="text-ink text-sm">{{ heroStats.tasks }}</b> 测试项</span>
+      </div>
+    </div>
+
+    <!-- 控制栏 -->
+    <div class="flex items-center gap-2 mb-4 flex-wrap">
+      <label class="ctl-group">
+        <span class="ctl-label">测试项</span>
+        <span class="relative flex items-center">
+          <select v-model="selectedTask" class="ctl-select">
+            <option v-for="(t, tid) in data.tasks" :key="tid" :value="tid">{{ t.title }}</option>
+          </select>
+          <svg class="ctl-chevron" viewBox="0 0 12 12" fill="none"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </label>
+      <label class="ctl-group" v-if="selectedTask && data.tasks[selectedTask]">
+        <span class="ctl-label">素材</span>
+        <span class="relative flex items-center">
+          <select v-model="selectedContent" class="ctl-select">
+            <option v-for="(c, cid) in data.tasks[selectedTask].contents" :key="cid" :value="cid">{{ c.title }}</option>
+          </select>
+          <svg class="ctl-chevron" viewBox="0 0 12 12" fill="none"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </label>
+      <label class="ctl-group">
+        <span class="ctl-label">排序</span>
+        <span class="relative flex items-center">
+          <select v-model="sortBy" class="ctl-select">
+            <option value="avg_score">按得分降序</option>
+            <option value="avg_cost">按成本升序</option>
+            <option value="avg_latency_s">按耗时升序</option>
+            <option value="pass_pure">按纯净输出率</option>
+            <option value="pass_font">按字体合规率</option>
+          </select>
+          <svg class="ctl-chevron" viewBox="0 0 12 12" fill="none"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </label>
+      <label class="ctl-group cursor-pointer">
+        <span class="ctl-label">紧凑</span>
+        <span class="switch">
+          <input type="checkbox" v-model="compactMode">
+          <span class="switch-track"></span>
+        </span>
+      </label>
+      <button @click="showPrompt = !showPrompt"
+        :class="showPrompt ? 'bg-ink text-white border-ink' : 'bg-white text-gray-600 border-hairline hover:border-cobalt hover:text-cobalt'"
+        class="ml-auto px-3.5 py-[7px] rounded-lg border text-[13px] font-medium transition flex items-center gap-1.5 shadow-sm">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none"><path d="M5.5 4.5 2 8l3.5 3.5M10.5 4.5 14 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        提示词与素材
+      </button>
+    </div>
+
+    <!-- 提示词与素材展示区：编辑器 × 文档 对照 -->
+    <Transition name="drop">
+    <div v-if="showPrompt && selectedTask && data.tasks[selectedTask]" class="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-4">
+      <!-- 提示词：代码编辑器风格 -->
+      <div class="rounded-xl overflow-hidden border border-ink shadow-lg shadow-ink/10 flex flex-col">
+        <div class="flex items-center gap-2 px-3.5 py-2 bg-ink">
+          <span class="flex gap-1.5 mr-1">
+            <i class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></i>
+            <i class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></i>
+            <i class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></i>
+          </span>
+          <span class="num text-[11px] text-white/70">prompt.md</span>
+          <span class="num text-[10px] text-white/25 tracking-[0.2em] ml-auto">PROMPT</span>
+          <button @click="copyText(data.tasks[selectedTask].prompt, 'prompt')"
+            class="num text-[10px] px-2 py-0.5 rounded border border-white/15 text-white/50 hover:text-white hover:border-white/40 transition">
+            {{ copied === 'prompt' ? '已复制 ✓' : '复制' }}
+          </button>
+        </div>
+        <pre class="code-scroll num text-[11px] leading-relaxed text-white/80 bg-ink-soft p-4 overflow-auto max-h-80 whitespace-pre-wrap flex-1">{{ data.tasks[selectedTask].prompt }}</pre>
+      </div>
+      <!-- 素材：文档风格 -->
+      <div v-if="selectedContent && data.tasks[selectedTask].contents[selectedContent]"
+        class="rounded-xl overflow-hidden border border-hairline shadow-sm bg-white flex flex-col">
+        <div class="flex items-center gap-2 px-3.5 py-2 bg-paper border-b border-hairline">
+          <svg class="w-3.5 h-3.5 text-cobalt flex-none" viewBox="0 0 16 16" fill="none"><path d="M4 1.5h6L13 4.5V14.5H4z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.5 1.5v3.5H13" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          <span class="font-display font-bold text-[13px] text-ink truncate">{{ data.tasks[selectedTask].contents[selectedContent].title }}</span>
+          <span class="num text-[10px] text-gray-300 tracking-[0.2em] ml-auto flex-none">SOURCE</span>
+          <a v-if="data.tasks[selectedTask].contents[selectedContent].source"
+            :href="data.tasks[selectedTask].contents[selectedContent].source" target="_blank"
+            class="num text-[10px] px-2 py-0.5 rounded border border-hairline text-gray-500 hover:text-cobalt hover:border-cobalt transition flex-none">原文 ↗</a>
+          <button @click="copyText(data.tasks[selectedTask].contents[selectedContent].body, 'content')"
+            class="num text-[10px] px-2 py-0.5 rounded border border-hairline text-gray-500 hover:text-cobalt hover:border-cobalt transition flex-none">
+            {{ copied === 'content' ? '已复制 ✓' : '复制' }}
+          </button>
+        </div>
+        <pre class="code-scroll text-xs leading-relaxed text-gray-700 p-4 overflow-auto max-h-80 whitespace-pre-wrap flex-1">{{ data.tasks[selectedTask].contents[selectedContent].body }}</pre>
+      </div>
+    </div>
+    </Transition>
+
+    <!-- 模型行 -->
+    <div v-for="(m, mi) in sortedModels" :key="m.name"
+      class="bg-white rounded-xl border border-hairline shadow-sm mb-3 p-4 flex items-start gap-4 hover:shadow-md hover:border-gray-300 transition">
+
+      <!-- 左侧模型信息 -->
+      <div class="w-44 shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="rank-chip" :class="mi < 3 && sortBy === 'avg_score' ? 'top' : ''">{{ String(mi + 1).padStart(2, '0') }}</span>
+          <div class="font-semibold text-sm text-ink truncate" :title="m.name">{{ m.name }}</div>
+        </div>
+        <div class="num text-[28px] leading-tight font-bold text-cobalt mt-1.5">{{ m.avg_pct }}<span class="text-sm text-gray-400 font-medium">%</span></div>
+        <!-- 稳定性条 -->
+        <div class="flex gap-1 mt-2">
+          <div v-for="r in m.runs" :key="r.run_index"
+            :class="scoreColor(r.total_score, r.status, m.max_score)"
+            class="score-block"
+            :title="`Run ${r.run_index}: ${Math.round(r.total_score / m.max_score * 100)}% (${r.status})`">
+          </div>
+        </div>
+        <div class="num text-[11px] text-gray-400 mt-2 space-y-0.5">
+          <div>{{ m.avg_cost.toFixed(4) }} 元/次</div>
+          <div>{{ m.avg_latency_s }}s / 次</div>
+          <div>{{ m.avg_tokens.toLocaleString() }} tokens</div>
+        </div>
+      </div>
+
+      <!-- 右侧 5 个 iPhone 框 -->
+      <div class="flex gap-2.5 overflow-x-auto runs-scroll pb-1">
+        <div v-for="r in m.runs" :key="r.run_index"
+          @click="openLightbox(m, r)"
+          :style="compactMode ? 'width:110px' : 'width:160px'"
+          class="shrink-0 cursor-pointer relative group">
+
+          <!-- 违规徽标（hover 浮现通俗解释） -->
+          <div class="flex flex-wrap gap-1 mb-1 min-h-[18px] content-start">
+            <span v-if="r.has_code_fence" class="badge bg-orange-500 text-white tip-b"
+              data-tip="输出被 Markdown 代码围栏（```svg）包裹，没有做到「直接输出 SVG」，属于指令不遵循">围栏</span>
+            <span v-if="!r.if_font" class="badge bg-red-500 text-white tip-b"
+              data-tip="使用了 macOS 非内置的中文字体（如微软雅黑），本机渲染时会被替换成其他字体，排版可能走样">非macOS字体</span>
+            <span v-if="!r.if_light_bg" class="badge bg-ink text-white tip-b"
+              data-tip="画面背景是深色，但题目要求浅色底">深色底</span>
+            <span v-if="!r.if_aspect" class="badge bg-purple-500 text-white tip-b"
+              data-tip="画布高宽比不在 iPhone 单屏要求的 2.10~2.20 之间，手机上无法一屏完整展示">比例错</span>
+            <span v-if="r.text_overflow_count > 0" class="badge bg-red-500 text-white tip-b"
+              data-tip="文字超出了画布或所在卡片的边界，徽标数字为溢出处数">溢出×{{ r.text_overflow_count }}</span>
+            <span v-if="r.text_shape_collision_count > 0" class="badge bg-red-500 text-white tip-b"
+              data-tip="文字被图形元素（箭头、图标等）压住，徽标数字为被遮挡处数">遮挡×{{ r.text_shape_collision_count }}</span>
+            <span v-if="r.truncated" class="badge bg-amber-500 text-white tip-b"
+              data-tip="输出达到 max_tokens 上限被截断，SVG 不完整">截断</span>
+          </div>
+
+          <!-- iPhone 外框 -->
+          <div class="iphone-frame" :style="frameStyle(r)">
+            <div class="iphone-screen">
+              <img v-if="r.thumb_path" :src="r.thumb_path" alt="run" loading="lazy">
+              <div v-else class="w-full h-full flex items-center justify-center text-xs text-gray-400 p-2 text-center">
+                {{ failLabel(r) }}
+              </div>
+            </div>
+          </div>
+
+          <!-- 序号 + 分数 -->
+          <div class="flex items-center justify-between mt-1.5 text-xs">
+            <span class="num text-gray-400">#{{ r.run_index }}</span>
+            <span :class="r.total_score >= 5 ? 'text-green-600' : r.total_score >= 3 ? 'text-amber-600' : 'text-red-500'"
+              class="num font-bold">{{ Math.round(r.total_score / m.max_score * 100) }}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="sortedModels.length === 0" class="text-center py-24">
+      <div class="font-display font-bold text-xl text-gray-300 mb-2">虚位以待</div>
+      <div class="text-gray-400 text-sm">暂无评测数据，请先运行评测。</div>
+    </div>
+  </div>
+
+  <!-- 榜单视图 -->
+  <div v-if="view === 'ranking'" class="max-w-7xl mx-auto px-4 py-5 w-full flex-1">
+    <div class="mb-5">
+      <h2 class="font-display font-black text-2xl text-ink tracking-tight">总榜</h2>
+      <p class="text-sm text-gray-500 mt-1">总分 = 启用的 A 层指令遵循项 + B 层渲染质量 4 项，按平均得分率排序</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+      <div class="bg-white rounded-xl border border-hairline shadow-sm p-4">
+        <h3 class="font-display font-bold text-ink mb-3">得分排名</h3>
+        <div ref="chartTotal" class="w-full h-80"></div>
+      </div>
+      <div class="bg-white rounded-xl border border-hairline shadow-sm p-4">
+        <h3 class="font-display font-bold text-ink mb-3">各项指标通过率（A 层指令遵循 + B 层渲染质量）</h3>
+        <div ref="chartCompliance" class="w-full h-80"></div>
+      </div>
+    </div>
+
+    <!-- 详细表格 -->
+    <div class="bg-white rounded-xl border border-hairline shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-ink text-white/70 text-xs tracking-wide">
+            <tr>
+              <th class="text-left px-3 py-2.5 font-medium">#</th>
+              <th class="text-left px-3 py-2.5 font-medium">模型</th>
+              <th class="text-center px-3 py-2.5 font-medium">得分</th>
+              <th class="text-center px-3 py-2.5 font-medium">纯净输出</th>
+              <th class="text-center px-3 py-2.5 font-medium">比例合规</th>
+              <th class="text-center px-3 py-2.5 font-medium">字体合规</th>
+              <th class="text-center px-3 py-2.5 font-medium">浅色底</th>
+              <th class="text-center px-3 py-2.5 font-medium">无溢出</th>
+              <th class="text-center px-3 py-2.5 font-medium">无重叠</th>
+              <th class="text-center px-3 py-2.5 font-medium">无遮挡</th>
+              <th class="text-center px-3 py-2.5 font-medium">非空白</th>
+              <th class="text-center px-3 py-2.5 font-medium">稳定性σ</th>
+              <th class="text-center px-3 py-2.5 font-medium">成本/次</th>
+              <th class="text-center px-3 py-2.5 font-medium">耗时/次</th>
+              <th class="text-center px-3 py-2.5 font-medium">预览</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(m, mi) in rankedModels" :key="m.name" class="border-t border-hairline hover:bg-paper transition">
+              <td class="px-3 py-2"><span class="rank-chip" :class="mi < 3 ? 'top' : ''">{{ mi + 1 }}</span></td>
+              <td class="px-3 py-2 font-medium text-ink">{{ m.name }}</td>
+              <td class="text-center px-3 py-2 num font-bold text-cobalt">{{ m.avg_pct }}%</td>
+              <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.if_pure_output) }}</td>
+              <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.if_aspect) }}</td>
+              <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.if_font) }}</td>
+              <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.if_light_bg) }}</td>
+              <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.text_overflow_count) }}</td>
+              <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.text_overlap_count) }}</td>
+              <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.text_shape_collision_count) }}</td>
+              <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.ink_ratio_ok) }}</td>
+              <td class="text-center px-3 py-2 num text-gray-500">{{ m.stability_std }}</td>
+              <td class="text-center px-3 py-2 num text-gray-500">{{ m.avg_cost.toFixed(4) }}</td>
+              <td class="text-center px-3 py-2 num text-gray-500">{{ m.avg_latency_s }}s</td>
+              <td class="text-center px-3 py-2">
+                <img v-if="m.runs[0] && m.runs[0].thumb_path"
+                  :src="m.runs[0].thumb_path"
+                  class="w-8 h-auto inline-block rounded cursor-pointer hover:ring-2 hover:ring-cobalt transition"
+                  @click="openLightbox(m, m.runs[0])"
+                  title="第 1 次">
+                <span v-else class="text-gray-300 text-xs">N/A</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 关于视图 -->
+  <div v-if="view === 'about'" class="max-w-4xl mx-auto px-4 py-8 w-full flex-1">
+    <h2 class="font-display font-black text-2xl text-ink mb-4 tracking-tight">关于 SVGArena</h2>
+    <p class="text-gray-600 mb-4 leading-relaxed">
+      SVGArena 通过统一的提示词让各大模型生成 SVG 信息图，自动核验指令遵循度与渲染质量，
+      以静态画廊形式呈现各模型的 SVG 能力差异。
+    </p>
+
+    <div class="bg-white rounded-xl border border-hairline shadow-sm p-5 space-y-6">
+      <div>
+        <h3 class="font-display font-bold text-ink mb-2 flex items-center gap-2">
+          <span class="w-1 h-4 bg-cobalt rounded-full inline-block"></span>评测方法
+        </h3>
+        <ol class="list-decimal list-inside text-gray-600 space-y-1 text-sm">
+          <li>使用 litellm 统一调用各模型 API，每个模型对同一内容生成 5 次</li>
+          <li>采样温度 0.8（考察输出波动与创意多样性），max_tokens 32768（放宽以不限制模型能力）</li>
+          <li>用 Playwright Chromium 渲染 SVG 为 PNG（与网页展示同引擎）</li>
+          <li>自动核验指令遵循度 + 渲染质量，满分由任务约束决定</li>
+        </ol>
+      </div>
+
+      <div>
+        <h3 class="font-display font-bold text-ink mb-2 flex items-center gap-2">
+          <span class="w-1 h-4 bg-cobalt rounded-full inline-block"></span>评分标准
+        </h3>
+        <p class="text-xs text-gray-500 mb-2">前提：SVG 合法且渲染成功，否则 0 分。满分 = 启用的 A 层数 + B 层 4 项。</p>
+        <div class="rounded-lg border border-hairline overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-paper text-gray-500 text-xs">
+              <tr><th class="text-left px-3 py-2 font-medium whitespace-nowrap">指标</th><th class="text-left px-3 py-2 font-medium">判定条件</th><th class="text-left px-3 py-2 font-medium whitespace-nowrap">类别</th><th class="px-3 py-2 font-medium whitespace-nowrap">分值</th></tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">纯净输出</td><td class="px-3 py-2">响应恰好以 &lt;svg 开头、&lt;/svg&gt; 结尾，无围栏/前言/后记</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">A · 任务特定</td><td class="text-center px-3 num">1</td></tr>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">比例合规</td><td class="px-3 py-2">viewBox 高宽比在 2.10~2.20 范围内（iPhone 全面屏比例约 2.16）</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">A · 任务特定</td><td class="text-center px-3 num">1</td></tr>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">字体合规</td><td class="px-3 py-2">font-family 不含非 macOS 内置中文字体（如微软雅黑、思源黑体等）</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">A · 任务特定</td><td class="text-center px-3 num">1</td></tr>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">浅色底</td><td class="px-3 py-2">PNG 边框区域众数色亮度 > 0.75</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">A · 任务特定</td><td class="text-center px-3 num">1</td></tr>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">无溢出</td><td class="px-3 py-2">文字包围盒不超出 viewBox 边界，也不超出所在卡片矩形边界</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">无重叠</td><td class="px-3 py-2">文字元素两两包围盒重叠面积不超过较小元素的 20%</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">无遮挡</td><td class="px-3 py-2">文字未被图形元素（箭头、图标等）遮挡。像素级差分检测：渲染两次（含文字/隐藏文字），在文字核心区域检查图形硬边侵入，排除删除线等横贯设计元素</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">非空白</td><td class="px-3 py-2">墨迹率（非背景像素占比）在 2%~80% 之间</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+          <strong class="text-ink">A 层（指令遵循度）</strong>：由 task.yaml 的 constraints 驱动，只有提示词中明确要求的约束才计入总分。换测试项目时自动适配。<br>
+          <strong class="text-ink">B 层（渲染质量）</strong>：通用指标（无溢出 / 无重叠 / 无遮挡 / 非空白），任何 SVG 信息图都适用，始终计入总分。
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-display font-bold text-ink mb-2 flex items-center gap-2">
+          <span class="w-1 h-4 bg-cobalt rounded-full inline-block"></span>渲染环境
+        </h3>
+        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+          <li>操作系统：macOS（Darwin 25.5.0）</li>
+          <li>渲染引擎：Playwright Chromium（headless）</li>
+          <li>设备像素比：2x（Retina）</li>
+          <li>字体环境：macOS 系统内置字体（PingFang SC 等），未注入自定义字体</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display font-bold text-ink mb-2 flex items-center gap-2">
+          <span class="w-1 h-4 bg-cobalt rounded-full inline-block"></span>免责声明
+        </h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          本评测在 temperature 0.8 下进行 5 次采样，反映的是该参数下的典型表现而非模型最优水平。
+          评分仅衡量指令遵循度与客观渲染质量，不评判美观度与创意——后者请访问者在画廊中自行判断。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div v-if="lightbox" class="lightbox-overlay" @click.self="closeLightbox()">
+    <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[95vh] overflow-hidden flex flex-col shadow-2xl">
+      <!-- 头部 -->
+      <div class="flex items-center justify-between px-5 py-3 bg-ink text-white">
+        <div class="flex items-baseline gap-3">
+          <span class="font-display font-bold text-base">{{ lightbox.model.name }}</span>
+          <span class="num text-white/40 text-sm">Run {{ lightbox.run.run_index }}</span>
+          <span :class="lightbox.run.total_score >= 5 ? 'text-green-400' : lightbox.run.total_score >= 3 ? 'text-amber-400' : 'text-red-400'"
+            class="num text-2xl font-bold">{{ Math.round(lightbox.run.total_score / lightbox.run.max_score * 100) }}<span class="text-sm text-white/40 font-normal">%</span></span>
+        </div>
+        <div class="flex items-center gap-2">
+          <!-- 视图切换 -->
+          <button v-for="m in ['iphone', 'full', 'code', 'raw']" :key="m"
+            @click="lightboxMode = m"
+            :class="lightboxMode === m ? 'bg-cobalt text-white' : 'text-white/55 hover:text-white hover:bg-white/10'"
+            class="px-3 py-1.5 rounded-lg text-xs font-medium transition">
+            {{ {iphone: 'iPhone 单屏', full: '完整原图', code: 'SVG 源码', raw: '原始响应'}[m] }}
+          </button>
+          <button @click="closeLightbox()" class="text-white/40 hover:text-white px-2 text-lg transition">✕</button>
+        </div>
+      </div>
+
+      <!-- 主体：竖图左右分栏，横图上下分栏 -->
+      <div class="flex-1 overflow-hidden flex" :class="isPortrait(lightbox.run) ? 'flex-row' : 'flex-col'">
+
+        <!-- 图片区 -->
+        <div class="overflow-auto flex items-center justify-center bg-paper p-4"
+          :class="isPortrait(lightbox.run) ? 'flex-1' : 'w-full'">
+          <!-- iPhone 单屏 -->
+          <div v-if="lightboxMode === 'iphone'" class="iphone-frame" style="width:390px; height:844px;">
+            <div class="iphone-screen">
+              <img v-if="lightbox.run.svg_path" :src="lightbox.run.svg_path" style="width:390px; height:auto;">
+            </div>
+          </div>
+          <!-- 完整原图 -->
+          <img v-else-if="lightboxMode === 'full' && lightbox.run.png_path"
+            :src="lightbox.run.png_path" class="max-w-full max-h-[75vh] rounded-lg shadow-xl">
+          <!-- SVG 源码 -->
+          <pre v-else-if="lightboxMode === 'code'" class="svg-code bg-ink text-green-300 p-4 rounded-lg max-w-3xl w-full" ref="svgCodePre"></pre>
+          <!-- 原始响应 -->
+          <pre v-else class="svg-code bg-ink text-amber-200 p-4 rounded-lg max-w-3xl w-full" ref="rawCodePre"></pre>
+        </div>
+
+        <!-- 右侧/下方指标面板 -->
+        <div class="bg-white overflow-y-auto p-5 space-y-5 shrink-0"
+          :class="isPortrait(lightbox.run) ? 'w-72 border-l border-hairline' : 'w-full border-t border-hairline'">
+
+          <!-- 指令遵循度 -->
+          <div>
+            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">指令遵循度</div>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-base tip" :data-tip="tooltipText('if_pure_output')">
+                <span class="text-gray-700">纯净输出</span>
+                <span :class="lightbox.run.if_pure_output ? 'text-green-600' : 'text-red-500'" class="font-bold text-lg">
+                  {{ lightbox.run.if_pure_output ? '✓' : '✗' }}
+                </span>
+              </div>
+              <div class="flex items-center justify-between text-base tip" :data-tip="tooltipText('if_aspect')">
+                <span class="text-gray-700">比例合规</span>
+                <span :class="lightbox.run.if_aspect ? 'text-green-600' : 'text-red-500'" class="font-bold text-lg">
+                  {{ lightbox.run.if_aspect ? '✓' : '✗' }}
+                </span>
+              </div>
+              <div class="flex items-center justify-between text-base tip" :data-tip="tooltipText('if_font')">
+                <span class="text-gray-700">字体合规</span>
+                <span :class="lightbox.run.if_font ? 'text-green-600' : 'text-red-500'" class="font-bold text-lg">
+                  {{ lightbox.run.if_font ? '✓' : '✗' }}
+                </span>
+              </div>
+              <div class="flex items-center justify-between text-base tip" :data-tip="tooltipText('if_light_bg')">
+                <span class="text-gray-700">浅色底</span>
+                <span :class="lightbox.run.if_light_bg ? 'text-green-600' : 'text-red-500'" class="font-bold text-lg">
+                  {{ lightbox.run.if_light_bg ? '✓' : '✗' }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 渲染质量 -->
+          <div>
+            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">渲染质量</div>
+            <div class="space-y-2 text-base">
+              <div class="flex items-center justify-between tip" :data-tip="tooltipText('text_overflow_count')">
+                <span class="text-gray-700">文字溢出</span>
+                <span :class="lightbox.run.text_overflow_count > 0 ? 'text-red-500' : 'text-green-600'" class="num font-bold text-lg">
+                  {{ lightbox.run.text_overflow_count }}
+                </span>
+              </div>
+              <div class="flex items-center justify-between tip" :data-tip="tooltipText('text_overlap_count')">
+                <span class="text-gray-700">文字重叠</span>
+                <span :class="lightbox.run.text_overlap_count > 0 ? 'text-red-500' : 'text-green-600'" class="num font-bold text-lg">
+                  {{ lightbox.run.text_overlap_count }}
+                </span>
+              </div>
+              <div class="flex items-center justify-between tip" :data-tip="tooltipText('text_shape_collision_count')">
+                <span class="text-gray-700">图形遮挡</span>
+                <span :class="lightbox.run.text_shape_collision_count > 0 ? 'text-red-500' : 'text-green-600'" class="num font-bold text-lg">
+                  {{ lightbox.run.text_shape_collision_count }}
+                </span>
+              </div>
+              <div class="flex items-center justify-between tip" :data-tip="tooltipText('ink_ratio')">
+                <span class="text-gray-700">墨迹率</span>
+                <span class="num font-bold text-gray-800">{{ (lightbox.run.ink_ratio * 100).toFixed(1) }}%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 元数据 -->
+          <div>
+            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">生成信息</div>
+            <div class="space-y-2 text-base">
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">画布尺寸</span>
+                <span class="num font-bold text-gray-800">{{ lightbox.run.view_w }}×{{ lightbox.run.view_h }}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">高宽比</span>
+                <span class="num font-bold text-gray-800">{{ lightbox.run.aspect.toFixed(2) }}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">元素数</span>
+                <span class="num font-bold text-gray-800">{{ lightbox.run.elem_total }}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">SVG 体积</span>
+                <span class="num font-bold text-gray-800">{{ (lightbox.run.svg_bytes / 1024).toFixed(1) }}KB</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">输入 tokens</span>
+                <span class="num font-bold text-gray-800">{{ lightbox.run.prompt_tokens.toLocaleString() }}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">输出 tokens</span>
+                <span class="num font-bold text-gray-800">{{ lightbox.run.completion_tokens.toLocaleString() }}</span>
+              </div>
+              <div class="flex items-center justify-between" v-if="lightbox.run.reasoning_tokens > 0">
+                <span class="text-gray-500 text-sm">└ 思考 tokens</span>
+                <span class="num font-bold text-gray-500 text-sm">{{ lightbox.run.reasoning_tokens.toLocaleString() }} ({{ Math.round(lightbox.run.reasoning_tokens / lightbox.run.completion_tokens * 100) }}%)</span>
+              </div>
+              <div class="flex items-center justify-between" v-if="lightbox.run.reasoning_tokens > 0">
+                <span class="text-gray-500 text-sm">└ 实际输出</span>
+                <span class="num font-bold text-gray-600 text-sm">{{ (lightbox.run.completion_tokens - lightbox.run.reasoning_tokens).toLocaleString() }}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">耗时</span>
+                <span class="num font-bold text-gray-800">{{ (lightbox.run.latency_ms / 1000).toFixed(1) }}s</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">成本</span>
+                <span class="num font-bold text-gray-800">{{ lightbox.run.cost_cny.toFixed(4) }} 元</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 字体详情 -->
+          <div v-if="lightbox.run.font_families || lightbox.run.font_violations">
+            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">字体详情</div>
+            <div v-if="lightbox.run.font_violations" class="text-sm text-red-600 mb-1">
+              违规: {{ lightbox.run.font_violations }}
+            </div>
+            <div class="num text-xs text-gray-500 break-all">{{ lightbox.run.font_families }}</div>
+          </div>
+
+          <!-- 导航 -->
+          <div class="pt-3 border-t border-hairline flex gap-2">
+            <button @click="prevRun" :disabled="lightbox.idx === 0"
+              class="flex-1 px-3 py-2 rounded-lg border border-hairline text-sm disabled:opacity-30 hover:border-cobalt hover:text-cobalt transition">← 上一次</button>
+            <button @click="nextRun" :disabled="lightbox.idx >= lightbox.model.runs.length - 1"
+              class="flex-1 px-3 py-2 rounded-lg border border-hairline text-sm disabled:opacity-30 hover:border-cobalt hover:text-cobalt transition">下一次 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="bg-ink mt-auto">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between text-xs text-white/35">
+      <span class="num">SVGArena · 温度 0.8 · 5 次采样 · Playwright Chromium 渲染</span>
+      <span>评分仅衡量指令遵循与客观渲染质量，不评判美观度</span>
+    </div>
+  </footer>
+
+</div>
+
+<script src="gallery_data.js"></script>
+<script>
+const { createApp, ref, reactive, computed, watch, nextTick, onMounted } = Vue;
+
+createApp({
+  setup() {
+    const data = ref(ARENA_DATA);
+    const view = ref('gallery');
+    const selectedTask = ref(Object.keys(ARENA_DATA.tasks)[0] || '');
+    const selectedContent = ref('');
+    const sortBy = ref('avg_score');
+    const compactMode = ref(false);
+    const showPrompt = ref(false);
+    const lightbox = ref(null);
+    const lightboxMode = ref('iphone');
+    const svgCodePre = ref(null);
+    const rawCodePre = ref(null);
+    const chartTotal = ref(null);
+    const chartCompliance = ref(null);
+    const copied = ref('');
+
+    // 复制文本到剪贴板（带 file:// 降级）
+    function copyText(text, key) {
+      const done = () => {
+        copied.value = key;
+        setTimeout(() => { if (copied.value === key) copied.value = ''; }, 1200);
+      };
+      const fallback = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) { /* ignore */ }
+        ta.remove();
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fallback);
+      } else {
+        fallback();
+      }
+    }
+
+    // 初始化 selectedContent
+    if (selectedTask.value && ARENA_DATA.tasks[selectedTask.value]) {
+      selectedContent.value = Object.keys(ARENA_DATA.tasks[selectedTask.value].contents)[0] || '';
+    }
+
+    // 顶部统计
+    const heroStats = computed(() => {
+      let runs = 0;
+      for (const m of Object.values(data.value.models)) {
+        for (const t of Object.values(m.by_task || {})) {
+          for (const c of Object.values(t.by_content || {})) runs += c.length;
+        }
+      }
+      return {
+        models: Object.keys(data.value.models).length,
+        tasks: Object.keys(data.value.tasks).length,
+        runs,
+      };
+    });
+
+    // 当前任务/内容下的模型列表
+    const currentModels = computed(() => {
+      const models = [];
+      for (const [name, m] of Object.entries(data.value.models)) {
+        // 过滤出当前 task/content 的 runs
+        const taskData = m.by_task[selectedTask.value];
+        if (!taskData) continue;
+        const contentData = taskData.by_content[selectedContent.value];
+        if (!contentData) continue;
+
+        const runs = contentData;
+        if (runs.length === 0) continue;
+
+        // 按 run_index 自然顺序排序
+        runs.sort((a, b) => a.run_index - b.run_index);
+
+        const scores = runs.map(r => r.total_score);
+        const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+        const maxScore = runs[0]?.max_score || 7;
+        const avgPct = maxScore > 0 ? Math.round(avgScore / maxScore * 1000) / 10 : 0;
+        const total = runs.length;
+        const validRuns = runs.filter(r => r.status === 'ok');
+
+        const passRates = {};
+        for (const key of ['if_pure_output', 'if_aspect', 'if_font', 'if_light_bg', 'render_ok']) {
+          passRates[key] = total > 0 ? (validRuns.filter(r => r[key]).length / total * 100) : 0;
+        }
+        // B 层通过率（== 0 即通过）
+        for (const key of ['text_overflow_count', 'text_overlap_count', 'text_shape_collision_count']) {
+          passRates[key] = total > 0 ? (validRuns.filter(r => r[key] === 0).length / total * 100) : 0;
+        }
+        // 非空白通过率（ink_ratio 在 0.02~0.80）
+        passRates['ink_ratio_ok'] = total > 0 ? (validRuns.filter(r => r.ink_ratio >= 0.02 && r.ink_ratio <= 0.80).length / total * 100) : 0;
+
+        const avgCost = total > 0 ? runs.reduce((s, r) => s + r.cost_cny, 0) / total : 0;
+        const avgLatency = total > 0 ? runs.reduce((s, r) => s + r.latency_ms, 0) / total / 1000 : 0;
+        const avgTokens = total > 0 ? Math.round(runs.reduce((s, r) => s + r.completion_tokens, 0) / total) : 0;
+
+        let std = 0;
+        if (scores.length >= 2) {
+          const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+          std = Math.sqrt(scores.reduce((s, v) => s + (v - mean) ** 2, 0) / (scores.length - 1));
+        }
+
+        models.push({
+          name,
+          runs,
+          avg_score: Math.round(avgScore * 100) / 100,
+          avg_pct: avgPct,
+          max_score: maxScore,
+          pass_rates: passRates,
+          avg_cost: avgCost,
+          avg_latency_s: Math.round(avgLatency * 10) / 10,
+          avg_tokens: avgTokens,
+          stability_std: Math.round(std * 100) / 100,
+          run_count: total,
+        });
+      }
+      return models;
+    });
+
+    // 排序后的模型
+    const sortedModels = computed(() => {
+      const models = [...currentModels.value];
+      const sortKey = sortBy.value;
+      if (sortKey === 'avg_score') models.sort((a, b) => b.avg_pct - a.avg_pct);
+      else if (sortKey === 'avg_cost') models.sort((a, b) => a.avg_cost - b.avg_cost);
+      else if (sortKey === 'avg_latency_s') models.sort((a, b) => a.avg_latency_s - b.avg_latency_s);
+      else if (sortKey === 'pass_pure') models.sort((a, b) => b.pass_rates.if_pure_output - a.pass_rates.if_pure_output);
+      else if (sortKey === 'pass_font') models.sort((a, b) => b.pass_rates.if_font - a.pass_rates.if_font);
+      return models;
+    });
+
+    // 榜单模型（全部，按总分降序）
+    const rankedModels = computed(() => {
+      return [...currentModels.value].sort((a, b) => b.avg_pct - a.avg_pct);
+    });
+
+    // 辅助方法
+    function scoreColor(score, status, maxScore = 7) {
+      if (status !== 'ok') return 'bg-red-500';
+      const pct = score / maxScore * 100;
+      if (pct >= 90) return 'bg-green-600';
+      if (pct >= 70) return 'bg-green-400';
+      if (pct >= 40) return 'bg-yellow-400';
+      if (pct >= 15) return 'bg-orange-400';
+      return 'bg-red-500';
+    }
+
+    function frameStyle(run) {
+      const w = compactMode.value ? 110 : 160;
+      const h = Math.round(w * 844 / 390);
+      return `width:${w}px; height:${h}px`;
+    }
+
+    function failLabel(run) {
+      if (run.status === 'no_svg') return '未输出 SVG';
+      if (run.status === 'truncated') return 'SVG 截断';
+      if (run.status === 'api_error') return 'API 错误';
+      return run.status || '失败';
+    }
+
+    function pct(val) {
+      return val.toFixed(0) + '%';
+    }
+
+    // 判断图片是否竖图（高宽比 > 1.2）
+    function isPortrait(run) {
+      if (run.view_w > 0 && run.view_h > 0) {
+        return run.view_h / run.view_w > 1.2;
+      }
+      return true; // 默认竖图
+    }
+
+    // 指标 tooltip 说明
+    const TOOLTIPS = {
+      if_pure_output: '纯净输出：响应恰好以 <svg 开头、</svg> 结尾，无 markdown 围栏、无前言或后记文字',
+      if_aspect: '比例合规：viewBox 高宽比在 2.10~2.20 范围内（iPhone 全面屏比例约 2.16，覆盖各代全面屏机型）',
+      if_font: '字体合规：font-family 不含非 macOS 内置中文字体（如微软雅黑、思源黑体等）',
+      if_light_bg: '浅色底：PNG 最外 5% 边框区域众数色亮度 > 0.75',
+      text_overflow_count: '文字溢出：文字包围盒超出 viewBox 或所在卡片矩形边界的数量，0 为满分',
+      text_overlap_count: '文字重叠：文字元素两两包围盒重叠面积超过较小元素 20% 的对数，0 为满分',
+      text_shape_collision_count: '图形遮挡：文字被图形元素（箭头、图标等）遮挡的数量。通过像素级差分检测——渲染两次（含文字/隐藏文字），在文字笔画核心区域检查是否有图形硬边侵入，排除删除线等横贯设计元素，0 为满分',
+      ink_ratio: '墨迹率：渲染后非背景像素占比。2%~80% 为满分（太低=几乎空白，太高=全填充）',
+    };
+
+    function tooltipText(key) {
+      return TOOLTIPS[key] || '';
+    }
+
+    // Lightbox
+    function openLightbox(model, run) {
+      const idx = model.runs.indexOf(run);
+      lightbox.value = { model, run, idx: idx >= 0 ? idx : 0 };
+      lightboxMode.value = 'iphone';
+      nextTick(() => loadSvgCode());
+    }
+
+    function closeLightbox() {
+      lightbox.value = null;
+    }
+
+    function prevRun() {
+      if (!lightbox.value || lightbox.value.idx <= 0) return;
+      lightbox.value.idx--;
+      lightbox.value.run = lightbox.value.model.runs[lightbox.value.idx];
+      nextTick(() => loadSvgCode());
+    }
+
+    function nextRun() {
+      if (!lightbox.value || lightbox.value.idx >= lightbox.value.model.runs.length - 1) return;
+      lightbox.value.idx++;
+      lightbox.value.run = lightbox.value.model.runs[lightbox.value.idx];
+      nextTick(() => loadSvgCode());
+    }
+
+    async function loadSvgCode() {
+      if (!lightbox.value) return;
+      if (lightboxMode.value === 'code' && svgCodePre.value) {
+        const svgPath = lightbox.value.run.svg_path;
+        if (!svgPath) return;
+        try {
+          const resp = await fetch(svgPath);
+          const text = await resp.text();
+          svgCodePre.value.textContent = text;
+        } catch (e) {
+          svgCodePre.value.textContent = '无法加载 SVG 源码: ' + e.message;
+        }
+      } else if (lightboxMode.value === 'raw' && rawCodePre.value) {
+        const rawPath = lightbox.value.run.raw_txt_path;
+        if (!rawPath) {
+          rawCodePre.value.textContent = '无原始响应数据';
+          return;
+        }
+        try {
+          const resp = await fetch(rawPath);
+          const text = await resp.text();
+          rawCodePre.value.textContent = text;
+        } catch (e) {
+          rawCodePre.value.textContent = '无法加载原始响应: ' + e.message;
+        }
+      }
+    }
+
+    watch(lightboxMode, () => nextTick(() => loadSvgCode()));
+
+    // 键盘导航
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.value) return;
+      if (e.key === 'ArrowLeft') prevRun();
+      if (e.key === 'ArrowRight') nextRun();
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ECharts 图表
+    const CHART_PALETTE = ['#2B4EFF', '#0EA5E9', '#16A34A', '#D97706', '#DC2626', '#7C3AED', '#DB2777', '#64748B', '#0D9488', '#B45309'];
+    const CHART_FONT = '"JetBrains Mono", ui-monospace, -apple-system, "PingFang SC", sans-serif';
+
+    function renderCharts() {
+      if (view.value !== 'ranking') return;
+      nextTick(() => {
+        renderTotalChart();
+        renderComplianceChart();
+      });
+    }
+
+    function renderTotalChart() {
+      if (!chartTotal.value) return;
+      const chart = echarts.init(chartTotal.value);
+      const models = rankedModels.value;
+      chart.setOption({
+        textStyle: { fontFamily: CHART_FONT },
+        tooltip: { trigger: 'axis' },
+        grid: { left: '25%', right: '8%' },
+        xAxis: {
+          type: 'value', max: 100,
+          axisLabel: { formatter: '{value}%', color: '#8B93A7' },
+          splitLine: { lineStyle: { color: '#EEF0F6' } },
+        },
+        yAxis: {
+          type: 'category', data: models.map(m => m.name),
+          axisLabel: { fontSize: 10, color: '#3A4356' },
+          axisLine: { lineStyle: { color: '#D4D8E2' } },
+        },
+        series: [{
+          type: 'bar',
+          data: models.map((m, i) => ({
+            value: m.avg_pct,
+            itemStyle: {
+              color: i === 0 ? '#0E1526' : '#2B4EFF',
+              borderRadius: [0, 4, 4, 0],
+            },
+          })),
+          barMaxWidth: 18,
+          label: { show: true, position: 'right', formatter: (params) => params.value + '%', color: '#3A4356', fontSize: 11 },
+        }],
+      });
+    }
+
+    function renderComplianceChart() {
+      if (!chartCompliance.value) return;
+      const chart = echarts.init(chartCompliance.value);
+      const models = rankedModels.value;
+      const indicators = ['纯净输出', '比例合规', '字体合规', '浅色底', '无溢出', '无重叠', '无遮挡', '非空白'];
+      const keys = ['if_pure_output', 'if_aspect', 'if_font', 'if_light_bg', 'text_overflow_count', 'text_overlap_count', 'text_shape_collision_count', 'ink_ratio_ok'];
+      chart.setOption({
+        textStyle: { fontFamily: CHART_FONT },
+        color: CHART_PALETTE,
+        tooltip: { trigger: 'axis' },
+        legend: { top: 0, type: 'scroll', textStyle: { color: '#3A4356' } },
+        grid: { left: '10%', right: '5%', bottom: '15%' },
+        xAxis: {
+          type: 'category', data: indicators,
+          axisLabel: { fontSize: 10, color: '#3A4356' },
+          axisLine: { lineStyle: { color: '#D4D8E2' } },
+        },
+        yAxis: {
+          type: 'value', max: 100,
+          axisLabel: { formatter: '{value}%', color: '#8B93A7' },
+          splitLine: { lineStyle: { color: '#EEF0F6' } },
+        },
+        series: models.map(m => ({
+          name: m.name,
+          type: 'bar',
+          barMaxWidth: 14,
+          itemStyle: { borderRadius: [3, 3, 0, 0] },
+          data: keys.map(k => m.pass_rates[k]),
+        })),
+      });
+    }
+
+    watch(view, () => renderCharts());
+    onMounted(() => {
+      // 如果初始就是 ranking 视图
+      if (view.value === 'ranking') renderCharts();
+    });
+
+    return {
+      data, view, selectedTask, selectedContent, sortBy, compactMode, showPrompt,
+      copied, copyText,
+      heroStats, sortedModels, rankedModels,
+      lightbox, lightboxMode, svgCodePre, rawCodePre,
+      chartTotal, chartCompliance,
+      scoreColor, frameStyle, failLabel, pct,
+      isPortrait, tooltipText,
+      openLightbox, closeLightbox, prevRun, nextRun,
+    };
+  }
+}).mount('#app');
+</script>
+</body>
+</html>
