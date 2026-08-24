@@ -1,0 +1,143 @@
+<svg viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, -apple-system, BlinkMacSystemFont, sans-serif" text-rendering="geometricPrecision">
+  <!-- 背景 -->
+  <rect width="390" height="844" fill="#F5F5F7"/>
+  
+  <!-- 顶部标签 -->
+  <rect x="24" y="32" width="50" height="18" rx="3" fill="#1D1D1F"/>
+  <text x="49" y="41" font-size="10" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" font-weight="600">财经</text>
+  <text x="82" y="41" font-size="10" fill="#86868B" dominant-baseline="middle">财联社 · 8月23日</text>
+  
+  <!-- 主标题 -->
+  <text x="24" y="80" font-size="22" font-weight="700" fill="#1D1D1F">英伟达服务器传出涨价</text>
+  <text x="24" y="108" font-size="22" font-weight="700" fill="#1D1D1F">涨幅<tspan fill="#E85D4E">"很多情况下超过15%"</tspan></text>
+  
+  <!-- 分割线 -->
+  <line x1="24" y1="126" x2="366" y2="126" stroke="#D2D2D7" stroke-width="1"/>
+  
+  <!-- 关键数据卡 -->
+  <g transform="translate(24, 142)">
+    <rect x="0" y="0" width="104" height="78" rx="6" fill="#FFFFFF" stroke="#E5E5EA"/>
+    <text x="12" y="22" font-size="10" fill="#86868B">服务器涨幅</text>
+    <text x="12" y="52" font-size="28" font-weight="700" fill="#E85D4E">15<tspan font-size="16">%+</tspan></text>
+    <text x="12" y="70" font-size="9" fill="#86868B">明年初起出货</text>
+    
+    <rect x="118" y="0" width="104" height="78" rx="6" fill="#FFFFFF" stroke="#E5E5EA"/>
+    <text x="130" y="22" font-size="10" fill="#86868B">VR200系统</text>
+    <text x="130" y="50" font-size="20" font-weight="700" fill="#1D1D1F">500<tspan font-size="14">-700</tspan></text>
+    <text x="130" y="70" font-size="9" fill="#86868B">万美元/台</text>
+    
+    <rect x="236" y="0" width="104" height="78" rx="6" fill="#FFFFFF" stroke="#E5E5EA"/>
+    <text x="248" y="22" font-size="10" fill="#86868B">GB200系统</text>
+    <text x="248" y="50" font-size="20" font-weight="700" fill="#1D1D1F">280<tspan font-size="14">-340</tspan></text>
+    <text x="248" y="70" font-size="9" fill="#86868B">万美元/台</text>
+  </g>
+  
+  <!-- 价格对比图 -->
+  <g transform="translate(24, 248)">
+    <rect x="0" y="-12" width="3" height="14" fill="#1D1D1F"/>
+    <text x="10" y="0" font-size="12" fill="#1D1D1F" font-weight="600">英伟达服务器单价对比</text>
+    <text x="0" y="16" font-size="9" fill="#86868B">单位：万美元 · 含价格区间</text>
+    
+    <text x="0" y="40" font-size="10" fill="#1D1D1F" font-weight="500">GB200 NVL72</text>
+    <rect x="104" y="32" width="22" height="14" rx="2" fill="#A8C5DC"/>
+    <text x="132" y="43" font-size="10" fill="#1D1D1F" font-weight="600">280-340</text>
+    
+    <text x="0" y="68" font-size="10" fill="#1D1D1F" font-weight="500">VR200 NVL72</text>
+    <rect x="186" y="62" width="74" height="14" rx="2" fill="#E85D4E"/>
+    <text x="266" y="73" font-size="10" fill="#E85D4E" font-weight="600">500-700</text>
+    
+    <line x1="0" y1="90" x2="260" y2="90" stroke="#D2D2D7" stroke-width="0.5"/>
+    <g font-size="8" fill="#86868B" text-anchor="middle">
+      <text x="0" y="102">0</text>
+      <text x="74" y="102">200</text>
+      <text x="149" y="102">400</text>
+      <text x="223" y="102">600</text>
+    </g>
+    <g stroke="#D2D2D7" stroke-width="0.5">
+      <line x1="0" y1="90" x2="0" y2="93"/>
+      <line x1="74" y1="90" x2="74" y2="93"/>
+      <line x1="149" y1="90" x2="149" y2="93"/>
+      <line x1="223" y1="90" x2="223" y2="93"/>
+    </g>
+  </g>
+  
+  <!-- 显卡案例 -->
+  <g transform="translate(24, 380)">
+    <rect x="0" y="-12" width="3" height="14" fill="#1D1D1F"/>
+    <text x="10" y="0" font-size="12" fill="#1D1D1F" font-weight="600">消费端同步暴涨</text>
+    <text x="0" y="16" font-size="9" fill="#86868B">次旗舰 RTX 5080 · 1个月内</text>
+    
+    <g transform="translate(0, 30)">
+      <text x="0" y="14" font-size="9" fill="#86868B">原价</text>
+      <text x="0" y="40" font-size="22" font-weight="700" fill="#1D1D1F">8000<tspan font-size="12" fill="#86868B"> 元</tspan></text>
+      
+      <path d="M 95 30 L 130 30 M 124 24 L 130 30 L 124 36" stroke="#86868B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      
+      <text x="140" y="14" font-size="9" fill="#86868B">现价</text>
+      <text x="140" y="40" font-size="22" font-weight="700" fill="#E85D4E">12000<tspan font-size="12"> 元</tspan></text>
+      
+      <rect x="252" y="20" width="80" height="22" rx="11" fill="#E85D4E"/>
+      <text x="292" y="35" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="600">↑ 50%</text>
+    </g>
+  </g>
+  
+  <!-- 财务数据 -->
+  <g transform="translate(24, 470)">
+    <rect x="0" y="-12" width="3" height="14" fill="#1D1D1F"/>
+    <text x="10" y="0" font-size="12" fill="#1D1D1F" font-weight="600">英伟达最新财报</text>
+    <text x="0" y="16" font-size="9" fill="#86868B">截至4月26日的三个月</text>
+    
+    <g transform="translate(0, 28)">
+      <text x="0" y="14" font-size="9" fill="#86868B">季度营收</text>
+      <text x="0" y="42" font-size="24" font-weight="700" fill="#1D1D1F">816<tspan font-size="13" fill="#86868B"> 亿美元</tspan></text>
+      
+      <line x1="160" y1="0" x2="160" y2="50" stroke="#D2D2D7" stroke-width="0.5"/>
+      
+      <text x="176" y="14" font-size="9" fill="#86868B">毛利率</text>
+      <text x="176" y="42" font-size="24" font-weight="700" fill="#1D1D1F">75<tspan font-size="13">%</tspan></text>
+      <text x="176" y="56" font-size="9" fill="#86868B">去年同期 60.5%</text>
+      
+      <rect x="270" y="22" width="62" height="22" rx="3" fill="#FCE9E5"/>
+      <text x="301" y="37" font-size="11" fill="#E85D4E" text-anchor="middle" font-weight="600">+14.5pp</text>
+    </g>
+  </g>
+  
+  <!-- 涨价背后 -->
+  <g transform="translate(24, 580)">
+    <rect x="0" y="-12" width="3" height="14" fill="#1D1D1F"/>
+    <text x="10" y="0" font-size="12" fill="#1D1D1F" font-weight="600">涨价背后</text>
+    
+    <g transform="translate(0, 20)">
+      <circle cx="4" cy="8" r="2.5" fill="#E85D4E"/>
+      <text x="14" y="11" font-size="10" fill="#1D1D1F">内存芯片成本飙升，DRAM容量决定AI芯片性能</text>
+    </g>
+    
+    <g transform="translate(0, 42)">
+      <circle cx="4" cy="8" r="2.5" fill="#E85D4E"/>
+      <text x="14" y="11" font-size="10" fill="#1D1D1F">内存供应商：三星 / SK海力士 / 美光</text>
+    </g>
+    
+    <g transform="translate(0, 64)">
+      <circle cx="4" cy="8" r="2.5" fill="#E85D4E"/>
+      <text x="14" y="11" font-size="10" fill="#1D1D1F">微软、谷歌、甲骨文等已被通知涨价</text>
+    </g>
+    
+    <g transform="translate(0, 86)">
+      <circle cx="4" cy="8" r="2.5" fill="#E85D4E"/>
+      <text x="14" y="11" font-size="10" fill="#1D1D1F">亚马逊、Meta等加速自研芯片布局</text>
+    </g>
+  </g>
+  
+  <!-- 关注时点 -->
+  <g transform="translate(24, 700)">
+    <rect x="0" y="0" width="342" height="56" rx="6" fill="#1D1D1F"/>
+    <text x="14" y="22" font-size="9" fill="#86868B">关注时点</text>
+    <text x="14" y="42" font-size="13" fill="#FFFFFF" font-weight="600">英伟达下周三美股盘后发布财报</text>
+    <circle cx="320" cy="28" r="4" fill="#E85D4E"/>
+    <circle cx="320" cy="28" r="7" fill="none" stroke="#E85D4E" stroke-width="1" opacity="0.4"/>
+  </g>
+  
+  <!-- 底部 -->
+  <text x="24" y="800" font-size="9" fill="#86868B">来源：财联社 · 编辑 史正丞</text>
+  <text x="24" y="816" font-size="9" fill="#86868B">本财年Q2预期毛利率 74.9%-75%</text>
+</svg>
