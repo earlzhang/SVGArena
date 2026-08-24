@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 812" text-rendering="geometricPrecision">
+  <defs>
+    <style>
+      text { font-family: "PingFang SC", "Hiragino Sans GB", sans-serif; }
+    </style>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A2A2A"/>
+      <stop offset="100%" stop-color="#1A1A1A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="375" height="812" fill="#F4F1EB"/>
+
+  <g id="topbar">
+    <rect width="375" height="40" fill="#FFFFFF"/>
+    <rect x="20" y="14" width="3" height="12" fill="#76B900"/>
+    <text x="30" y="25" font-size="12" fill="#1F1F1F" font-weight="600">科技 · 半导体</text>
+    <text x="355" y="25" font-size="11" fill="#7A7670" text-anchor="end">财联社 · 8月23日</text>
+  </g>
+
+  <g id="title">
+    <text x="20" y="78" font-size="22" fill="#1F1F1F" font-weight="700">英伟达服务器传出涨价消息</text>
+    <text x="20" y="105" font-size="15" fill="#7A7670">涨幅"很多情况下超过15%"</text>
+    <text x="20" y="125" font-size="11" fill="#A8A39B">因内存芯片成本飙升 · 明年初起出货系统</text>
+  </g>
+
+  <g id="hero-card">
+    <rect x="20" y="142" width="335" height="95" rx="10" fill="url(#cardGrad)"/>
+    <text x="40" y="168" font-size="10" fill="#76B900" font-weight="600" letter-spacing="1.5">SERVER PRICE HIKE</text>
+    <text x="40" y="215" font-size="44" fill="#FFFFFF" font-weight="700">15<tspan font-size="28" fill="#76B900">%+</tspan></text>
+    <text x="200" y="175" font-size="13" fill="#FFFFFF" font-weight="500">服务器价格涨幅</text>
+    <text x="200" y="197" font-size="11" fill="#A8A39B">适用于明年初出货系统</text>
+    <text x="200" y="217" font-size="11" fill="#A8A39B">多家最大客户已被告知</text>
+  </g>
+
+  <g id="chips">
+    <text x="20" y="265" font-size="12" fill="#7A7670" font-weight="600">涉及芯片组合</text>
+    <line x1="20" y1="273" x2="355" y2="273" stroke="#E5E0D5" stroke-width="1"/>
+
+    <circle cx="28" cy="293" r="3" fill="#76B900"/>
+    <text x="40" y="297" font-size="14" fill="#1F1F1F" font-weight="600">Vera Rubin</text>
+    <text x="40" y="313" font-size="11" fill="#7A7670">下一代AI算力平台</text>
+    <text x="355" y="297" font-size="11" fill="#A8A39B" text-anchor="end">明年初</text>
+
+    <circle cx="28" cy="333" r="3" fill="#76B900"/>
+    <text x="40" y="337" font-size="14" fill="#1F1F1F" font-weight="600">Grace Blackwell</text>
+    <text x="40" y="353" font-size="11" fill="#7A7670">当前主力AI服务器芯片</text>
+    <text x="355" y="337" font-size="11" fill="#A8A39B" text-anchor="end">明年初</text>
+  </g>
+
+  <g id="price-compare">
+    <text x="20" y="385" font-size="12" fill="#7A7670" font-weight="600">单台服务器价格区间</text>
+    <text x="355" y="385" font-size="10" fill="#A8A39B" text-anchor="end">万美元</text>
+    <line x1="20" y1="393" x2="355" y2="393" stroke="#E5E0D5" stroke-width="1"/>
+
+    <text x="20" y="415" font-size="11" fill="#1F1F1F" font-weight="500">GB200 NVL72</text>
+    <rect x="20" y="421" width="335" height="10" rx="5" fill="#EDE8DC"/>
+    <rect x="134" y="421" width="29" height="10" rx="5" fill="#76B900" opacity="0.7"/>
+    <text x="355" y="430" font-size="11" fill="#1F1F1F" font-weight="600" text-anchor="end">280–340</text>
+
+    <text x="20" y="455" font-size="11" fill="#1F1F1F" font-weight="500">VR200 NVL72</text>
+    <rect x="20" y="461" width="335" height="10" rx="5" fill="#EDE8DC"/>
+    <rect x="239" y="461" width="96" height="10" rx="5" fill="#76B900"/>
+    <text x="355" y="470" font-size="11" fill="#1F1F1F" font-weight="600" text-anchor="end">500–700</text>
+
+    <text x="20" y="498" font-size="11" fill="#B8413C">▎15%涨幅 ≈ 多花 $42–105万 / 台</text>
+  </g>
+
+  <g id="gpu-case">
+    <text x="20" y="525" font-size="12" fill="#7A7670" font-weight="600">消费端连锁反应</text>
+    <line x1="20" y1="533" x2="355" y2="533" stroke="#E5E0D5" stroke-width="1"/>
+
+    <text x="20" y="558" font-size="13" fill="#1F1F1F" font-weight="500">次旗舰 RTX 5080 显卡</text>
+
+    <text x="20" y="590" font-size="20" fill="#7A7670" font-weight="600">¥8,000</text>
+    <text x="115" y="588" font-size="16" fill="#B8413C">→</text>
+    <text x="135" y="590" font-size="20" fill="#B8413C" font-weight="700">¥12,000</text>
+    <text x="240" y="590" font-size="11" fill="#A8A39B">1个月 +50%</text>
+  </g>
+
+  <g id="earnings">
+    <text x="20" y="620" font-size="12" fill="#7A7670" font-weight="600">财报关注</text>
+    <text x="355" y="620" font-size="11" fill="#B8413C" font-weight="500" text-anchor="end">下周三美股盘后</text>
+    <line x1="20" y1="628" x2="355" y2="628" stroke="#E5E0D5" stroke-width="1"/>
+
+    <text x="20" y="650" font-size="11" fill="#7A7670">上财季营收</text>
+    <text x="20" y="675" font-size="24" fill="#1F1F1F" font-weight="700">$816<tspan font-size="14" fill="#7A7670">亿</tspan></text>
+
+    <line x1="180" y1="640" x2="180" y2="690" stroke="#E5E0D5" stroke-width="1"/>
+
+    <text x="200" y="650" font-size="11" fill="#7A7670">毛利率</text>
+    <text x="200" y="675" font-size="24" fill="#1F1F1F" font-weight="700">75<tspan font-size="14" fill="#7A7670">%</tspan></text>
+    <text x="200" y="692" font-size="10" fill="#A8A39B">去年同期 60.5%</text>
+  </g>
+
+  <g id="chain">
+    <text x="20" y="725" font-size="12" fill="#7A7670" font-weight="600">影响链条</text>
+    <line x1="20" y1="733" x2="355" y2="733" stroke="#E5E0D5" stroke-width="1"/>
+
+    <rect x="20" y="745" width="72" height="22" rx="11" fill="#FFFFFF" stroke="#E5E0D5"/>
+    <text x="56" y="760" font-size="10" fill="#1F1F1F" text-anchor="middle">DRAM涨价</text>
+
+    <text x="100" y="760" font-size="12" fill="#76B900" text-anchor="middle">→</text>
+
+    <rect x="110" y="745" width="72" height="22" rx="11" fill="#FFFFFF" stroke="#E5E0D5"/>
+    <text x="146" y="760" font-size="10" fill="#1F1F1F" text-anchor="middle">服务器涨价</text>
+
+    <text x="190" y="760" font-size="12" fill="#76B900" text-anchor="middle">→</text>
+
+    <rect x="200" y="745" width="72" height="22" rx="11" fill="#FFFFFF" stroke="#E5E0D5"/>
+    <text x="236" y="760" font-size="10" fill="#1F1F1F" text-anchor="middle">利润率审视</text>
+
+    <text x="280" y="760" font-size="12" fill="#76B900" text-anchor="middle">→</text>
+
+    <rect x="290" y="745" width="65" height="22" rx="11" fill="#1F1F1F"/>
+    <text x="322" y="760" font-size="10" fill="#FFFFFF" text-anchor="middle">客户自研</text>
+  </g>
+
+  <g id="footer">
+    <text x="20" y="790" font-size="10" fill="#A8A39B">内存供应商：三星 · SK海力士 · 美光</text>
+    <text x="355" y="790" font-size="10" fill="#A8A39B" text-anchor="end">云厂商加速自研芯片</text>
+  </g>
+</svg>

@@ -516,6 +516,8 @@
               data-tip="文字超出了画布或所在卡片的边界，徽标数字为溢出处数">溢出×{{ r.text_overflow_count }}</span>
             <span v-if="r.text_shape_collision_count > 0" class="badge bg-red-500 text-white tip-b"
               data-tip="文字被图形元素（箭头、图标等）压住，徽标数字为被遮挡处数">遮挡×{{ r.text_shape_collision_count }}</span>
+            <span v-if="r.tight_pair_count > 0" class="badge bg-orange-400 text-white tip-b"
+              data-tip="存在间距小于 1px 的文字对：未真正重叠但排版非常紧凑，可能表现为视觉拥挤。数字为过近对数">紧凑×{{ r.tight_pair_count }}</span>
             <span v-if="r.truncated" class="badge bg-amber-500 text-white tip-b"
               data-tip="输出达到 max_tokens 上限被截断，SVG 不完整">截断</span>
           </div>
@@ -551,7 +553,7 @@
   <div v-if="view === 'ranking'" class="max-w-7xl mx-auto px-4 py-5 w-full flex-1">
     <div class="mb-5">
       <h2 class="font-display font-black text-2xl text-ink tracking-tight">总榜</h2>
-      <p class="text-sm text-gray-500 mt-1">总分 = 启用的 A 层指令遵循项 + B 层渲染质量 4 项，按平均得分率排序</p>
+      <p class="text-sm text-gray-500 mt-1">总分 = 启用的 A 层指令遵循项 + B 层渲染质量 5 项，按平均得分率排序</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
@@ -580,7 +582,9 @@
               <th class="text-center px-3 py-2.5 font-medium">浅色底</th>
               <th class="text-center px-3 py-2.5 font-medium">无溢出</th>
               <th class="text-center px-3 py-2.5 font-medium">无重叠</th>
+              <th class="text-center px-3 py-2.5 font-medium" title="所有 run 中收缩文字单元的最小间距（越小越紧凑，0 表示有重叠）">最小间距</th>
               <th class="text-center px-3 py-2.5 font-medium">无遮挡</th>
+              <th class="text-center px-3 py-2.5 font-medium">无紧凑</th>
               <th class="text-center px-3 py-2.5 font-medium">非空白</th>
               <th class="text-center px-3 py-2.5 font-medium">稳定性σ</th>
               <th class="text-center px-3 py-2.5 font-medium">成本/次</th>
@@ -599,7 +603,9 @@
               <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.if_light_bg) }}</td>
               <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.text_overflow_count) }}</td>
               <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.text_overlap_count) }}</td>
+              <td class="text-center px-3 py-2 num" :class="m.min_text_gap === 0 ? 'text-red-500' : m.min_text_gap < 1 ? 'text-amber-600' : 'text-green-600'">{{ m.min_text_gap.toFixed(2) }}</td>
               <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.text_shape_collision_count) }}</td>
+              <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.tight_pair_count) }}</td>
               <td class="text-center px-3 py-2 num">{{ pct(m.pass_rates.ink_ratio_ok) }}</td>
               <td class="text-center px-3 py-2 num text-gray-500">{{ m.stability_std }}</td>
               <td class="text-center px-3 py-2 num text-gray-500">{{ m.avg_cost.toFixed(4) }}</td>
@@ -656,15 +662,16 @@
               <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">字体合规</td><td class="px-3 py-2">font-family 不含非 macOS 内置中文字体（如微软雅黑、思源黑体等）</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">A · 任务特定</td><td class="text-center px-3 num">1</td></tr>
               <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">浅色底</td><td class="px-3 py-2">PNG 边框区域众数色亮度 > 0.75</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">A · 任务特定</td><td class="text-center px-3 num">1</td></tr>
               <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">无溢出</td><td class="px-3 py-2">文字包围盒不超出 viewBox 边界，也不超出所在卡片矩形边界</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
-              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">无重叠</td><td class="px-3 py-2">文字元素两两包围盒重叠面积不超过较小元素的 20%</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">无重叠</td><td class="px-3 py-2">文字元素两两包围盒重叠面积不超过较小元素的 15%</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
               <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">无遮挡</td><td class="px-3 py-2">文字未被图形元素（箭头、图标等）遮挡。像素级差分检测：渲染两次（含文字/隐藏文字），在文字核心区域检查图形硬边侵入，排除删除线等横贯设计元素</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
+              <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">无紧凑</td><td class="px-3 py-2">收缩后文字单元之间不存在间距小于 1 用户单位的 pair</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
               <tr class="border-t border-hairline"><td class="px-3 py-2 font-medium text-ink whitespace-nowrap">非空白</td><td class="px-3 py-2">墨迹率（非背景像素占比）在 2%~80% 之间</td><td class="px-3 py-2 text-gray-400 whitespace-nowrap">B · 通用</td><td class="text-center px-3 num">1</td></tr>
             </tbody>
           </table>
         </div>
         <p class="text-xs text-gray-500 mt-2 leading-relaxed">
           <strong class="text-ink">A 层（指令遵循度）</strong>：由 task.yaml 的 constraints 驱动，只有提示词中明确要求的约束才计入总分。换测试项目时自动适配。<br>
-          <strong class="text-ink">B 层（渲染质量）</strong>：通用指标（无溢出 / 无重叠 / 无遮挡 / 非空白），任何 SVG 信息图都适用，始终计入总分。
+          <strong class="text-ink">B 层（渲染质量）</strong>：通用指标（无溢出 / 无重叠 / 无遮挡 / 无紧凑 / 非空白），任何 SVG 信息图都适用，始终计入总分。
         </p>
       </div>
 
@@ -694,7 +701,7 @@
 
   <!-- Lightbox -->
   <div v-if="lightbox" class="lightbox-overlay" @click.self="closeLightbox()">
-    <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[95vh] overflow-hidden flex flex-col shadow-2xl">
+    <div class="bg-white rounded-2xl max-w-6xl w-full h-[90vh] overflow-hidden flex flex-col shadow-2xl">
       <!-- 头部 -->
       <div class="flex items-center justify-between px-5 py-3 bg-ink text-white">
         <div class="flex items-baseline gap-3">
@@ -737,8 +744,11 @@
         </div>
 
         <!-- 右侧/下方指标面板 -->
-        <div class="bg-white overflow-y-auto p-5 space-y-5 shrink-0"
+        <div class="bg-white p-5 flex flex-col min-w-0"
           :class="isPortrait(lightbox.run) ? 'w-72 border-l border-hairline' : 'w-full border-t border-hairline'">
+
+          <!-- 可滚动内容区 -->
+          <div class="overflow-y-auto overflow-x-hidden break-words flex-1 space-y-5 -mr-5 pr-5">
 
           <!-- 指令遵循度 -->
           <div>
@@ -785,6 +795,18 @@
                 <span class="text-gray-700">文字重叠</span>
                 <span :class="lightbox.run.text_overlap_count > 0 ? 'text-red-500' : 'text-green-600'" class="num font-bold text-lg">
                   {{ lightbox.run.text_overlap_count }}
+                </span>
+              </div>
+              <div class="flex items-center justify-between tip" :data-tip="tooltipText('min_text_gap')">
+                <span class="text-gray-700">最小间距</span>
+                <span :class="lightbox.run.min_text_gap === 0 ? 'text-red-500' : lightbox.run.min_text_gap < 1 ? 'text-amber-600' : 'text-green-600'" class="num font-bold text-lg">
+                  {{ lightbox.run.min_text_gap.toFixed(2) }}
+                </span>
+              </div>
+              <div class="flex items-center justify-between tip" :data-tip="tooltipText('tight_pair_count')">
+                <span class="text-gray-700">过近对数</span>
+                <span :class="lightbox.run.tight_pair_count > 0 ? 'text-amber-600' : 'text-green-600'" class="num font-bold text-lg">
+                  {{ lightbox.run.tight_pair_count }}
                 </span>
               </div>
               <div class="flex items-center justify-between tip" :data-tip="tooltipText('text_shape_collision_count')">
@@ -850,14 +872,16 @@
           <!-- 字体详情 -->
           <div v-if="lightbox.run.font_families || lightbox.run.font_violations">
             <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">字体详情</div>
-            <div v-if="lightbox.run.font_violations" class="text-sm text-red-600 mb-1">
+            <div v-if="lightbox.run.font_violations" class="text-sm text-red-600 mb-1 break-all">
               违规: {{ lightbox.run.font_violations }}
             </div>
             <div class="num text-xs text-gray-500 break-all">{{ lightbox.run.font_families }}</div>
           </div>
 
+          </div>
+
           <!-- 导航 -->
-          <div class="pt-3 border-t border-hairline flex gap-2">
+          <div class="pt-3 border-t border-hairline flex gap-2 shrink-0">
             <button @click="prevRun" :disabled="lightbox.idx === 0"
               class="flex-1 px-3 py-2 rounded-lg border border-hairline text-sm disabled:opacity-30 hover:border-cobalt hover:text-cobalt transition">← 上一次</button>
             <button @click="nextRun" :disabled="lightbox.idx >= lightbox.model.runs.length - 1"
@@ -1016,6 +1040,8 @@ createApp({
         const avgCost = total > 0 ? runs.reduce((s, r) => s + r.cost_cny, 0) / total : 0;
         const avgLatency = total > 0 ? runs.reduce((s, r) => s + r.latency_ms, 0) / total / 1000 : 0;
         const avgTokens = total > 0 ? Math.round(runs.reduce((s, r) => s + r.completion_tokens, 0) / total) : 0;
+        const minTextGap = total > 0 ? Math.min(...runs.map(r => typeof r.min_text_gap === 'number' ? r.min_text_gap : Infinity)) : 0;
+        const tightPairTotal = total > 0 ? runs.reduce((s, r) => s + (r.tight_pair_count || 0), 0) : 0;
 
         let std = 0;
         if (scores.length >= 2) {
@@ -1033,6 +1059,8 @@ createApp({
           avg_cost: avgCost,
           avg_latency_s: Math.round(avgLatency * 10) / 10,
           avg_tokens: avgTokens,
+          min_text_gap: typeof minTextGap === 'number' && isFinite(minTextGap) ? Math.round(minTextGap * 100) / 100 : 0,
+          tight_pair_total: tightPairTotal,
           stability_std: Math.round(std * 100) / 100,
           run_count: total,
         });
@@ -1100,7 +1128,9 @@ createApp({
       if_font: '字体合规：font-family 不含非 macOS 内置中文字体（如微软雅黑、思源黑体等）',
       if_light_bg: '浅色底：PNG 最外 5% 边框区域众数色亮度 > 0.75',
       text_overflow_count: '文字溢出：文字包围盒超出 viewBox 或所在卡片矩形边界的数量，0 为满分',
-      text_overlap_count: '文字重叠：文字元素两两包围盒重叠面积超过较小元素 20% 的对数，0 为满分',
+      text_overlap_count: '文字重叠：文字元素两两包围盒重叠面积超过较小元素 15% 的对数，0 为满分',
+      min_text_gap: '最小间距：收缩后文字单元之间最近的欧氏距离（用户单位）。0 表示存在重叠或紧贴；<1 表示间距过近；越大越安全',
+      tight_pair_count: '过近对数：收缩后文字单元之间距离 < 1 用户单位的 pair 数量，反映排版拥挤程度，0 为最佳',
       text_shape_collision_count: '图形遮挡：文字被图形元素（箭头、图标等）遮挡的数量。通过像素级差分检测——渲染两次（含文字/隐藏文字），在文字笔画核心区域检查是否有图形硬边侵入，排除删除线等横贯设计元素，0 为满分',
       ink_ratio: '墨迹率：渲染后非背景像素占比。2%~80% 为满分（太低=几乎空白，太高=全填充）',
     };
@@ -1240,8 +1270,8 @@ createApp({
       if (!chartCompliance.value) return;
       const chart = echarts.init(chartCompliance.value);
       const models = rankedModels.value;
-      const indicators = ['纯净输出', '比例合规', '字体合规', '浅色底', '无溢出', '无重叠', '无遮挡', '非空白'];
-      const keys = ['if_pure_output', 'if_aspect', 'if_font', 'if_light_bg', 'text_overflow_count', 'text_overlap_count', 'text_shape_collision_count', 'ink_ratio_ok'];
+      const indicators = ['纯净输出', '比例合规', '字体合规', '浅色底', '无溢出', '无重叠', '无遮挡', '无紧凑', '非空白'];
+      const keys = ['if_pure_output', 'if_aspect', 'if_font', 'if_light_bg', 'text_overflow_count', 'text_overlap_count', 'text_shape_collision_count', 'tight_pair_count', 'ink_ratio_ok'];
       chart.setOption({
         textStyle: { fontFamily: CHART_FONT },
         color: CHART_PALETTE,
