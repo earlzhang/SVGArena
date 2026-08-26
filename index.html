@@ -1032,8 +1032,8 @@ createApp({
           passRates[key] = total > 0 ? (validRuns.filter(r => r[key]).length / total * 100) : 0;
         }
         // B 层通过率（== 0 即通过）
-        for (const key of ['text_overflow_count', 'text_overlap_count', 'text_shape_collision_count']) {
-          passRates[key] = total > 0 ? (validRuns.filter(r => r[key] === 0).length / total * 100) : 0;
+        for (const key of ['text_overflow_count', 'text_overlap_count', 'text_shape_collision_count', 'tight_pair_count']) {
+          passRates[key] = total > 0 ? (validRuns.filter(r => (r[key] || 0) === 0).length / total * 100) : 0;
         }
         // 非空白通过率（ink_ratio 在 0.02~0.80）
         passRates['ink_ratio_ok'] = total > 0 ? (validRuns.filter(r => r.ink_ratio >= 0.02 && r.ink_ratio <= 0.80).length / total * 100) : 0;
