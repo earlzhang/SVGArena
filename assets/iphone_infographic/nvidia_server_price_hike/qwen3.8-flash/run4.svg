@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" font-family="PingFang SC, Hiragino Sans GB, Heiti SC, STHeiti, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#ECFEFF"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ECFDF5"/>
+      <stop offset="1" stop-color="#F0FDF4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="390" height="844" fill="url(#bg)"/>
+
+  <rect x="16" y="16" width="358" height="92" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="30" y="44" font-size="10" fill="#94A3B8">财联社 · 8月23日</text>
+  <text x="30" y="68" font-size="17" font-weight="700" fill="#0F172A">英伟达服务器传出涨价消息</text>
+  <text x="30" y="90" font-size="13" font-weight="600" fill="#DC2626">涨幅“很多情况下超过15%”</text>
+
+  <rect x="16" y="112" width="358" height="76" rx="18" fill="url(#hero)" stroke="#A7F3D0"/>
+  <text x="30" y="156" font-size="36" font-weight="700" fill="#047857">&gt;15%</text>
+  <line x1="112" y1="132" x2="112" y2="168" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="124" y="138" font-size="11" fill="#334155">部分搭载英伟达 AI 芯片的服务器</text>
+  <text x="124" y="154" font-size="11" fill="#334155">Vera Rubin / Grace Blackwell</text>
+  <text x="124" y="170" font-size="11" font-weight="600" fill="#047857">明年初起普遍提价</text>
+
+  <rect x="16" y="196" width="358" height="92" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="30" y="220" font-size="13" font-weight="700" fill="#0F172A">涨价逻辑：内存芯片成本飙升</text>
+  <circle cx="34" cy="240" r="3" fill="#047857"/>
+  <text x="44" y="244" font-size="11" fill="#475569">微软、谷歌、甲骨文等大客户的服务器代工厂</text>
+  <circle cx="34" cy="262" r="3" fill="#047857"/>
+  <text x="44" y="266" font-size="11" fill="#475569">已通知客户价格上调；适用于明年年初出货系统</text>
+  <text x="30" y="284" font-size="10" fill="#94A3B8">具体涨幅取决于芯片型号与内存配置</text>
+
+  <rect x="16" y="296" width="358" height="118" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="30" y="320" font-size="13" font-weight="700" fill="#0F172A">单台服务器已是“百万美元级”</text>
+  <text x="30" y="344" font-size="11" fill="#64748B">Blackwell GB200 NVL72</text>
+  <text x="360" y="344" text-anchor="end" font-size="12" font-weight="700" fill="#B45309">$2.8–3.4M</text>
+  <rect x="30" y="352" width="330" height="6" rx="3" fill="#F1F5F9"/>
+  <rect x="30" y="352" width="165" height="6" rx="3" fill="#F59E0B"/>
+
+  <text x="30" y="376" font-size="11" fill="#64748B">Vera Rubin VR200</text>
+  <text x="360" y="376" text-anchor="end" font-size="12" font-weight="700" fill="#B91C1C">$5.0–7.0M</text>
+  <rect x="30" y="384" width="330" height="6" rx="3" fill="#F1F5F9"/>
+  <rect x="30" y="384" width="280" height="6" rx="3" fill="#EF4444"/>
+
+  <text x="30" y="406" font-size="11" fill="#475569">按15%计：单台可能多 $42万–$105万</text>
+
+  <rect x="16" y="422" width="358" height="86" rx="16" fill="#FFF7ED" stroke="#FED7AA"/>
+  <text x="30" y="446" font-size="13" font-weight="700" fill="#9A3412">消费市场：显卡先涨一轮</text>
+  <text x="30" y="464" font-size="11" fill="#7C2D12">RTX 5080 在约1个月内</text>
+  <rect x="30" y="472" width="120" height="28" rx="10" fill="#FFFFFF" stroke="#FDBA74"/>
+  <text x="90" y="490" text-anchor="middle" font-size="11" fill="#9A3412">约 ¥8000</text>
+  <text x="165" y="490" text-anchor="middle" font-size="16" fill="#C2410C">→</text>
+  <rect x="180" y="472" width="120" height="28" rx="10" fill="#FFEDD5" stroke="#FDBA74"/>
+  <text x="240" y="490" text-anchor="middle" font-size="11" font-weight="700" fill="#C2410C">¥1.2万</text>
+  <text x="310" y="490" font-size="10" fill="#9A3412">档次跳</text>
+
+  <rect x="16" y="516" width="358" height="116" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="30" y="540" font-size="13" font-weight="700" fill="#0F172A">财报前：市场盯住毛利率</text>
+  <text x="30" y="562" font-size="11" fill="#475569">下周三美股盘后发布最新财报</text>
+  <text x="30" y="582" font-size="11" fill="#64748B">上季营收 $816亿</text>
+  <text x="360" y="582" text-anchor="end" font-size="11" font-weight="700" fill="#047857">毛利率约 75%</text>
+  <rect x="30" y="588" width="330" height="8" rx="4" fill="#E2E8F0"/>
+  <rect x="30" y="588" width="247" height="8" rx="4" fill="#10B981"/>
+  <text x="30" y="610" font-size="10" fill="#64748B">上年同期毛利率 60.5%；本季度预期 74.9%–75%</text>
+  <text x="30" y="626" font-size="11" font-weight="600" fill="#B91C1C">关注：存储涨价是否侵蚀英伟达利润率</text>
+
+  <rect x="16" y="640" width="358" height="172" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="30" y="664" font-size="13" font-weight="700" fill="#0F172A">连锁反应：内存、自研与供应</text>
+  <circle cx="34" cy="684" r="3" fill="#047857"/>
+  <text x="44" y="688" font-size="11" fill="#475569">算力争抢使 DRAM 从大宗商品变成关键约束</text>
+  <circle cx="34" cy="706" r="3" fill="#047857"/>
+  <text x="44" y="710" font-size="11" fill="#475569">AI 芯片实际性能高度依赖配套 DRAM 容量</text>
+  <circle cx="34" cy="728" r="3" fill="#047857"/>
+  <text x="44" y="732" font-size="11" fill="#475569">苹果、高通等也因芯片短缺提高产品价格</text>
+  <circle cx="34" cy="750" r="3" fill="#047857"/>
+  <text x="44" y="754" font-size="11" fill="#475569">亚马逊、微软、谷歌、Meta推进自研芯片</text>
+  <circle cx="34" cy="772" r="3" fill="#047857"/>
+  <text x="44" y="776" font-size="11" fill="#475569">但大型数据中心仍依赖英伟达软件“护城河”</text>
+  <circle cx="34" cy="794" r="3" fill="#047857"/>
+  <text x="44" y="798" font-size="11" fill="#475569">挑战者需从三星、SK海力士、美光获得供应</text>
+
+  <text x="30" y="828" font-size="10" fill="#94A3B8">信息来源：财联社 · 核心：内存成本推动 AI 服务器涨价</text>
+</svg>
