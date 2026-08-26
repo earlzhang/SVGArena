@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="100%" height="100%" font-family="PingFang SC, Hiragino Sans GB, STHeiti, sans-serif">
+  <defs>
+    <filter id="ds" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.05" />
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="390" height="844" fill="#F7FAFC" />
+
+  <!-- 页眉 -->
+  <rect x="0" y="0" width="390" height="130" fill="#FFFFFF" />
+  <text x="16" y="52" font-size="22" font-weight="bold" fill="#1A202C">英伟达服务器传出涨价消息</text>
+  <text x="16" y="84" font-size="16" font-weight="600" fill="#E53E3E">涨幅"很多情况下超过15%"</text>
+  <text x="16" y="106" font-size="11" fill="#A0AEC0">财联社8月23日讯（编辑 史正丞）</text>
+
+  <!-- 英雄卡片（核心提示） -->
+  <rect x="16" y="150" width="358" height="140" rx="16" fill="#FFFFFF" filter="url(#ds)" />
+  <rect x="32" y="166" width="80" height="24" rx="12" fill="#FED7D7" />
+  <text x="72" y="182" font-size="12" font-weight="600" fill="#C53030" text-anchor="middle">核心提示</text>
+  <text x="32" y="215" font-size="14" fill="#4A5568">搭载英伟达Vera Rubin、Grace</text>
+  <text x="32" y="239" font-size="14" fill="#4A5568">Blackwell等芯片的服务器明年初起将</text>
+  <text x="32" y="263" font-size="14" fill="#4A5568">普遍提价，部分涨幅将超过</text>
+  <rect x="205" y="249" width="48" height="20" rx="10" fill="#FED7D7" />
+  <text x="229" y="263" font-size="14" font-weight="bold" fill="#C53030" text-anchor="middle">15%</text>
+
+  <!-- 原因与影响 -->
+  <rect x="16" y="310" width="172" height="130" rx="16" fill="#FFFFFF" filter="url(#ds)" />
+  <text x="28" y="340" font-size="12" fill="#A0AEC0">原因</text>
+  <text x="28" y="365" font-size="15" font-weight="bold" fill="#1A202C">内存芯片(DRAM)</text>
+  <text x="28" y="385" font-size="15" font-weight="bold" fill="#1A202C">成本飙升</text>
+  <rect x="28" y="405" width="20" height="20" rx="4" fill="#E6FFFA" />
+  <path d="M32 410 L36 410 M32 414 L36 414 M32 418 L36 418 M40 410 L44 410 M40 414 L44 414 M40 418 L44 418" stroke="#319795" stroke-width="2" stroke-linecap="round" />
+
+  <rect x="202" y="310" width="172" height="130" rx="16" fill="#FFFFFF" filter="url(#ds)" />
+  <text x="214" y="340" font-size="12" fill="#A0AEC0">影响</text>
+  <text x="214" y="365" font-size="15" font-weight="bold" fill="#1A202C">服务器价格</text>
+  <text x="214" y="385" font-size="15" font-weight="bold" fill="#1A202C">普遍上涨</text>
+  <path d="M220 418 L226 410 L232 414 L238 405" stroke="#DD6B20" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M234 405 L238 405 L238 409" stroke="#DD6B20" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- 价格对比区 -->
+  <rect x="16" y="460" width="358" height="190" rx="16" fill="#FFFFFF" filter="url(#ds)" />
+  <text x="32" y="490" font-size="16" font-weight="bold" fill="#1A202C">百万美元级别的服务器</text>
+  <text x="32" y="510" font-size="12" fill="#A0AEC0">涨价风暴将至</text>
+
+  <text x="32" y="540" font-size="15" fill="#4A5568">Blackwell NVL72</text>
+  <text x="32" y="560" font-size="15" fill="#4A5568">GB200 机架</text>
+  <text x="358" y="550" font-size="15" font-weight="bold" fill="#1A202C" text-anchor="end">$280-340万</text>
+  <rect x="32" y="570" width="326" height="6" rx="3" fill="#E2E8F0" />
+  <rect x="32" y="570" width="158" height="6" rx="3" fill="#38A169" />
+
+  <text x="32" y="600" font-size="15" fill="#4A5568">Vera Rubin NVL72</text>
+  <text x="32" y="620" font-size="15" fill="#4A5568">VR200 系统</text>
+  <text x="358" y="610" font-size="15" font-weight="bold" fill="#1A202C" text-anchor="end">$500-700万</text>
+  <rect x="32" y="630" width="326" height="6" rx="3" fill="#E2E8F0" />
+  <rect x="32" y="630" width="326" height="6" rx="3" fill="#DD6B20" />
+
+  <text x="32" y="645" font-size="12" fill="#718096">即使涨幅15%，也意味着额外增加大几十万至百万美元成本</text>
+
+  <!-- 利润率与财报区 -->
+  <rect x="16" y="670" width="172" height="100" rx="16" fill="#FFFFFF" filter="url(#ds)" />
+  <text x="28" y="695" font-size="12" fill="#A0AEC0">当前毛利率</text>
+  <text x="28" y="735" font-size="32" font-weight="bold" fill="#38A169">75%</text>
+  <text x="28" y="755" font-size="11" fill="#A0AEC0">上一财年同期 60.5%</text>
+
+  <rect x="202" y="670" width="172" height="100" rx="16" fill="#FFFFFF" filter="url(#ds)" />
+  <text x="214" y="695" font-size="12" fill="#A0AEC0">财报发布日期</text>
+  <text x="214" y="735" font-size="32" font-weight="bold" fill="#2B6CB0">下周三</text>
+  <text x="214" y="755" font-size="11" fill="#A0AEC0">美股盘后</text>
+
+  <!-- 背景延伸区 -->
+  <rect x="16" y="790" width="358" height="52" rx="12" fill="#EBF8FF" />
+  <text x="28" y="810" font-size="13" fill="#2B6CB0">💰 消费市场：RTX 5080 一个月从 8000元跳至 1.2万元</text>
+  <text x="28" y="830" font-size="13" fill="#2B6CB0">🏢 行业动向：苹果、高通提价，客户加速自研芯片</text>
+</svg>

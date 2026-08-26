@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBFCFE"/>
+      <stop offset="1" stop-color="#F4F7FB"/>
+    </linearGradient>
+    <style>
+      text {
+        font-family: "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti";
+      }
+      .title { font-size: 16px; font-weight: 700; fill: #111827; }
+      .sub { font-size: 12px; fill: #4B5563; }
+      .tag { font-size: 9px; fill: #1D4ED8; }
+      .section { font-size: 12px; font-weight: 700; fill: #111827; }
+      .metric-value { font-size: 15px; font-weight: 700; text-anchor: middle; }
+      .metric-label { font-size: 9px; fill: #6B7280; text-anchor: middle; }
+      .flow-title { font-size: 10px; fill: #6B7280; text-anchor: middle; }
+      .flow-value { font-size: 11px; font-weight: 700; text-anchor: middle; }
+      .row-label { font-size: 10px; fill: #6B7280; }
+      .row-strong { font-size: 11px; font-weight: 700; fill: #111827; }
+      .row-value { font-size: 11px; font-weight: 700; text-anchor: end; }
+      .note { font-size: 9px; fill: #6B7280; }
+      .card-title { font-size: 10px; font-weight: 700; fill: #111827; }
+      .card-text { font-size: 10px; fill: #374151; }
+      .small { font-size: 9px; fill: #374151; }
+      .tiny { font-size: 9px; fill: #6B7280; }
+    </style>
+  </defs>
+
+  <rect width="390" height="844" fill="url(#bg)"/>
+  <circle cx="350" cy="30" r="70" fill="#E8F1FF" opacity="0.5"/>
+  <circle cx="30" cy="820" r="80" fill="#EAF8F1" opacity="0.45"/>
+
+  <!-- Header -->
+  <rect x="18" y="22" width="64" height="18" rx="9" fill="#E5F0FF"/>
+  <text class="tag" x="50" y="34" text-anchor="middle">财联社 8/23</text>
+  <text class="title" x="18" y="60">英伟达服务器传出涨价消息</text>
+  <text class="sub" x="18" y="80">涨幅“很多情况下超过15%”</text>
+  <line x1="18" y1="92" x2="372" y2="92" stroke="#E5E7EB" stroke-width="1"/>
+
+  <!-- Key metrics -->
+  <rect x="18" y="102" width="354" height="66" rx="14" fill="#FFFFFF" stroke="#E6EAF2"/>
+  <line x1="136" y1="116" x2="136" y2="154" stroke="#E6EAF2"/>
+  <line x1="254" y1="116" x2="254" y2="154" stroke="#E6EAF2"/>
+
+  <text class="metric-value" x="77" y="128" fill="#D97706">超15%</text>
+  <text class="metric-label" x="77" y="146">很多情况下涨幅</text>
+
+  <text class="metric-value" x="195" y="128" fill="#2563EB">明年初</text>
+  <text class="metric-label" x="195" y="146">出货系统普遍提价</text>
+
+  <text class="metric-value" x="313" y="128" fill="#059669">下周三</text>
+  <text class="metric-label" x="313" y="146">英伟达发布财报</text>
+
+  <!-- Logic flow -->
+  <text class="section" x="18" y="186">涨价逻辑</text>
+
+  <rect x="18" y="196" width="112" height="48" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+  <text class="flow-title" x="74" y="214">内存芯片</text>
+  <text class="flow-value" x="74" y="228" fill="#C2410C">成本飙升</text>
+
+  <path d="M131 220 L135 220" stroke="#9CA3AF" stroke-width="2"/>
+  <polygon points="135,216 139,220 135,224" fill="#9CA3AF"/>
+
+  <rect x="139" y="196" width="112" height="48" rx="10" fill="#EFF6FF" stroke="#BFDBFE"/>
+  <text class="flow-title" x="195" y="214">AI服务器</text>
+  <text class="flow-value" x="195" y="228" fill="#1D4ED8">普遍提价</text>
+
+  <path d="M252 220 L256 220" stroke="#9CA3AF" stroke-width="2"/>
+  <polygon points="256,216 260,220 256,224" fill="#9CA3AF"/>
+
+  <rect x="260" y="196" width="112" height="48" rx="10" fill="#ECFDF5" stroke="#A7F3D0"/>
+  <text class="flow-title" x="316" y="214">数据中心</text>
+  <text class="flow-value" x="316" y="228" fill="#047857">额外开销</text>
+
+  <!-- Price references -->
+  <text class="section" x="18" y="262">价格参照</text>
+
+  <rect x="18" y="272" width="354" height="32" rx="10" fill="#FFFFFF" stroke="#E6EAF2"/>
+  <text class="row-label" x="30" y="292">消费显卡</text>
+  <text class="row-strong" x="82" y="292">RTX 5080 1个月</text>
+  <text class="row-value" x="360" y="292" fill="#B45309">8000元 → 1.2万元</text>
+
+  <rect x="18" y="310" width="354" height="32" rx="10" fill="#FFFFFF" stroke="#E6EAF2"/>
+  <text class="row-label" x="30" y="330">机架服务器</text>
+  <text class="row-strong" x="82" y="330">GB200 NVL72</text>
+  <text class="row-value" x="360" y="330" fill="#1D4ED8">280万–340万美元/台</text>
+
+  <rect x="18" y="348" width="354" height="32" rx="10" fill="#FFFFFF" stroke="#E6EAF2"/>
+  <text class="row-label" x="30" y="368">机架服务器</text>
+  <text class="row-strong" x="82" y="368">VR200（询价）</text>
+  <text class="row-value" x="360" y="368" fill="#7C3AED">500万–700万美元/台</text>
+
+  <text class="note" x="18" y="392">15%涨幅 ≈ 大几十万至近百万美元/台；苹果、高通也因芯片短缺提价。</text>
+
+  <!-- Capital focus -->
+  <text class="section" x="18" y="412">资本焦点</text>
+  <rect x="18" y="422" width="354" height="94" rx="14" fill="#FFFFFF" stroke="#E6EAF2"/>
+
+  <text x="30" y="440" font-size="10" font-weight="700" fill="#111827">下周三美股盘后：英伟达发布最新财报</text>
+
+  <text x="30" y="458" font-size="9" fill="#6B7280">上财年同期毛利率 60.5%</text>
+  <rect x="30" y="462" width="330" height="7" rx="3.5" fill="#E9EEF5"/>
+  <rect x="30" y="462" width="182" height="7" rx="3.5" fill="#94A3B8"/>
+
+  <text x="30" y="482" font-size="9" fill="#6B7280">最新/预期毛利率 约75%</text>
+  <rect x="30" y="486" width="330" height="7" rx="3.5" fill="#E9EEF5"/>
+  <rect x="30" y="486" width="225" height="7" rx="3.5" fill="#3B82F6"/>
+
+  <text x="30" y="502" font-size="9" fill="#6B7280">DRAM容量决定AI芯片性能；内存厂商影响力上升。</text>
+  <text x="30" y="512" font-size="9" fill="#6B7280">市场关注存储涨价是否侵蚀英伟达利润率。</text>
+
+  <!-- Affected scope -->
+  <text class="section" x="18" y="528">受影响范围</text>
+  <rect x="18" y="538" width="354" height="72" rx="14" fill="#FFFFFF" stroke="#E6EAF2"/>
+
+  <text x="30" y="556" font-size="10" font-weight="700" fill="#111827">产品：Vera Rubin、Grace Blackwell 等服务器</text>
+  <text x="30" y="572" font-size="10" fill="#374151">客户：微软、谷歌、甲骨文等大型数据中心</text>
+  <text x="30" y="588" font-size="9" fill="#6B7280">时间：明年年初出货；涨幅依芯片与内存配置而定</text>
+
+  <!-- Chain effects -->
+  <text class="section" x="18" y="626">连锁影响</text>
+
+  <rect x="18" y="636" width="172" height="100" rx="12" fill="#FFFFFF" stroke="#E6EAF2"/>
+  <text x="30" y="656" font-size="11" font-weight="700" fill="#111827">云厂商自研加速</text>
+  <text x="30" y="674" font-size="9" fill="#374151">亚马逊、微软、</text>
+  <text x="30" y="688" font-size="9" fill="#374151">谷歌、Meta推进</text>
+  <text x="30" y="702" font-size="9" fill="#374151">内部芯片项目</text>
+  <text x="30" y="716" font-size="9" fill="#6B7280">但仍依赖英伟达</text>
+  <text x="30" y="730" font-size="9" fill="#6B7280">软件生态护城河</text>
+
+  <rect x="200" y="636" width="172" height="100" rx="12" fill="#FFFFFF" stroke="#E6EAF2"/>
+  <text x="212" y="656" font-size="11" font-weight="700" fill="#111827">挑战者窗口</text>
+  <text x="212" y="674" font-size="9" fill="#374151">核心变量是供应：</text>
+  <text x="212" y="688" font-size="9" fill="#374151">三星、SK海力士、</text>
+  <text x="212" y="702" font-size="9" fill="#374151">美光能否提供</text>
+  <text x="212" y="716" font-size="9" fill="#6B7280">足够DRAM/内存；</text>
+  <text x="212" y="730" font-size="9" fill="#6B7280">否则难以替代。</text>
+
+  <!-- Key takeaway -->
+  <rect x="18" y="750" width="354" height="68" rx="14" fill="#FFF7ED" stroke="#FED7AA"/>
+  <text x="30" y="772" font-size="11" font-weight="700" fill="#92400E">核心判断</text>
+  <text x="30" y="790" font-size="10" fill="#7C2D12">内存成本正在重塑AI算力定价，</text>
+  <text x="30" y="806" font-size="10" fill="#7C2D12">英伟达利润率与自研替代成为下周财报焦点。</text>
+</svg>
