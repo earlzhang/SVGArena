@@ -366,6 +366,14 @@
     </div>
   </header>
 
+  <!-- 评分说明条（全局，所有视图可见） -->
+  <div class="bg-amber-50 border-b border-amber-200">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-2 text-xs text-amber-800">
+      <svg class="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v3.5M8 11v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span><b>评分说明</b>：本榜评分与排序仅基于指令遵循度与渲染质量的<b>错误扣分</b>（溢出/重叠/遮挡/比例/字体等），<b>不代表审美优劣</b>。视觉设计的美感、创意、信息层次等主观维度不在评测范围内，请结合画廊视图自行判断。</span>
+    </div>
+  </div>
+
   <!-- 画廊视图 -->
   <div v-if="view === 'gallery'" class="max-w-7xl mx-auto px-4 py-5 w-full flex-1">
 
