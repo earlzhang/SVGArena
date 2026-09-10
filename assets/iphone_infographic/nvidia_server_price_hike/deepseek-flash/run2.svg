@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','STHeiti',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F8FAFD"/>
+      <stop offset="1" stop-color="#EDF1F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="390" height="844" fill="url(#bg)"/>
+
+  <!-- 顶部信息 -->
+  <text x="20" y="32" font-size="11" fill="#8A94A6">财联社 · 8月23日</text>
+  <text x="370" y="32" font-size="11" fill="#8A94A6" text-anchor="end">编辑 史正丞</text>
+
+  <!-- 标题 -->
+  <text x="20" y="64" font-size="20" font-weight="700" fill="#16203A">英伟达服务器传出涨价</text>
+  <text x="20" y="92" font-size="20" font-weight="700" fill="#16203A">涨幅<tspan fill="#D6453D">“很多情况下超过15%”</tspan></text>
+
+  <!-- 核心信息卡 -->
+  <rect x="20" y="108" width="350" height="88" rx="16" fill="#FFFFFF" stroke="#E9EDF3"/>
+  <text x="40" y="164" font-size="40" font-weight="700" fill="#D6453D">&gt;15%</text>
+  <text x="42" y="184" font-size="10" fill="#9AA3B2">很多情况下</text>
+  <line x1="162" y1="130" x2="162" y2="176" stroke="#EEF1F6" stroke-width="1"/>
+  <text x="178" y="148" font-size="13" font-weight="700" fill="#16203A">内存芯片成本飙升</text>
+  <text x="178" y="170" font-size="11.5" fill="#6B7688">搭载英伟达 AI 芯片的服务器</text>
+  <text x="178" y="188" font-size="11.5" fill="#6B7688">普遍提价</text>
+
+  <!-- 生效时间 / 涉及芯片 -->
+  <rect x="20" y="208" width="168" height="72" rx="14" fill="#FFFFFF" stroke="#E9EDF3"/>
+  <text x="36" y="232" font-size="10.5" fill="#8A94A6">生效时间</text>
+  <text x="36" y="258" font-size="14" font-weight="700" fill="#16203A">明年年初起</text>
+
+  <rect x="202" y="208" width="168" height="72" rx="14" fill="#FFFFFF" stroke="#E9EDF3"/>
+  <text x="218" y="232" font-size="10.5" fill="#8A94A6">涉及芯片</text>
+  <text x="218" y="250" font-size="11.5" font-weight="700" fill="#16203A">Vera Rubin</text>
+  <text x="218" y="267" font-size="11.5" font-weight="700" fill="#16203A">Grace Blackwell</text>
+
+  <!-- 通知链条 -->
+  <rect x="20" y="292" width="350" height="72" rx="14" fill="#FFFFFF" stroke="#E9EDF3"/>
+  <text x="36" y="316" font-size="10.5" fill="#8A94A6">谁已收到通知</text>
+  <text x="36" y="338" font-size="12" fill="#3C4759">微软、谷歌、甲骨文等大型数据中心运营商</text>
+  <text x="36" y="356" font-size="12" fill="#3C4759">的代工服务器厂商，已通知客户价格将上调</text>
+
+  <!-- 价格参考 -->
+  <rect x="20" y="376" width="350" height="124" rx="16" fill="#FFFFFF" stroke="#E9EDF3"/>
+  <text x="36" y="400" font-size="10.5" fill="#8A94A6">单台机架价格参考</text>
+
+  <text x="36" y="428" font-size="12" font-weight="600" fill="#16203A">NVL72 GB200</text>
+  <text x="132" y="428" font-size="10" fill="#9AA3B2">Blackwell 架构</text>
+  <text x="354" y="428" font-size="13" font-weight="700" fill="#16203A" text-anchor="end">280–340 万美元</text>
+  <rect x="36" y="436" width="318" height="7" rx="3.5" fill="#EEF2F8"/>
+  <rect x="36" y="436" width="155" height="7" rx="3.5" fill="#9DBEF7"/>
+
+  <text x="36" y="474" font-size="12" font-weight="600" fill="#16203A">NVL72 VR200</text>
+  <text x="132" y="474" font-size="10" fill="#9AA3B2">Vera Rubin 架构</text>
+  <text x="354" y="474" font-size="13" font-weight="700" fill="#D6453D" text-anchor="end">500–700 万美元</text>
+  <rect x="36" y="482" width="318" height="7" rx="3.5" fill="#EEF2F8"/>
+  <rect x="36" y="482" width="318" height="7" rx="3.5" fill="#F2A9A4"/>
+
+  <!-- 财报与毛利率 -->
+  <rect x="20" y="512" width="350" height="120" rx="16" fill="#FFFFFF" stroke="#E9EDF3"/>
+  <text x="36" y="536" font-size="10.5" fill="#8A94A6">市场关注 · 下周三美股盘后发布最新财报</text>
+
+  <text x="36" y="572" font-size="11" fill="#8A94A6">毛利率</text>
+  <text x="36" y="600" font-size="26" font-weight="700" fill="#16203A">75%<tspan font-size="12" font-weight="400" fill="#8A94A6"> 左右</tspan></text>
+
+  <text x="354" y="572" font-size="11" fill="#8A94A6" text-anchor="end">上一财年同期 60.5%</text>
+  <text x="354" y="592" font-size="11" fill="#8A94A6" text-anchor="end">二季度指引 74.9%–75%</text>
+
+  <text x="36" y="620" font-size="11" font-weight="600" fill="#D6453D">存储涨价是否会侵蚀利润率？</text>
+
+  <!-- 连锁反应 -->
+  <rect x="20" y="644" width="350" height="128" rx="16" fill="#EAF1FE" stroke="#DCE7FB"/>
+  <text x="36" y="670" font-size="10.5" fill="#5B7DBF">连锁反应</text>
+  <text x="36" y="696" font-size="13" font-weight="700" fill="#16203A">涨价推动云厂商加速自研芯片</text>
+  <text x="36" y="720" font-size="11.5" fill="#4A5568">亚马逊、微软、谷歌、Meta 均在推进内部芯片项目</text>
+  <text x="36" y="742" font-size="11.5" fill="#4A5568">但英伟达软件生态仍是其最大护城河</text>
+
+</svg>
