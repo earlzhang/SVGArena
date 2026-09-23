@@ -482,7 +482,7 @@
     </Transition>
 
     <!-- 模型行 -->
-    <div v-for="(m, mi) in sortedModels" :key="m.name"
+    <div v-for="(m, mi) in displayedModels" :key="m.name"
       class="bg-white rounded-xl border border-hairline shadow-sm mb-3 p-4 flex items-start gap-4 hover:shadow-md hover:border-gray-300 transition">
 
       <!-- 左侧模型信息 -->
@@ -553,6 +553,14 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div v-if="visibleModelCount < sortedModels.length" class="flex flex-col items-center gap-1 pt-2 pb-5">
+      <button type="button" @click="loadMoreModels"
+        class="px-5 py-2 rounded-lg border border-hairline bg-white text-sm font-medium text-gray-600 shadow-sm transition hover:border-cobalt hover:text-cobalt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40">
+        更多
+      </button>
+      <span class="text-xs text-gray-400">再加载 {{ Math.min(10, sortedModels.length - visibleModelCount) }} 个 · 已显示 {{ displayedModels.length }} / {{ sortedModels.length }} 个模型</span>
     </div>
 
     <div v-if="sortedModels.length === 0" class="text-center py-24">
@@ -962,6 +970,7 @@ createApp({
     const selectedTask = ref(Object.keys(ARENA_DATA.tasks)[0] || '');
     const selectedContent = ref('');
     const sortBy = ref('avg_score');
+    const visibleModelCount = ref(10);
     const compactMode = ref(false);
     const showPrompt = ref(false);
     const lightbox = ref(null);
@@ -1096,6 +1105,16 @@ createApp({
     const rankedModels = computed(() => {
       return [...currentModels.value].sort((a, b) => b.avg_pct - a.avg_pct);
     });
+
+    const displayedModels = computed(() => sortedModels.value.slice(0, visibleModelCount.value));
+
+    watch([sortBy, selectedTask, selectedContent], () => {
+      visibleModelCount.value = 10;
+    });
+
+    function loadMoreModels() {
+      visibleModelCount.value += 10;
+    }
 
     // 辅助方法
     function scoreColor(score, status, maxScore = 7) {
@@ -1317,9 +1336,9 @@ createApp({
     });
 
     return {
-      data, view, selectedTask, selectedContent, sortBy, compactMode, showPrompt,
+      data, view, selectedTask, selectedContent, sortBy, visibleModelCount, compactMode, showPrompt,
       copied, copyText,
-      heroStats, sortedModels, rankedModels,
+      heroStats, sortedModels, displayedModels, rankedModels, loadMoreModels,
       lightbox, lightboxMode, svgCodePre, rawCodePre,
       chartTotal, chartCompliance,
       scoreColor, frameStyle, failLabel, pct,
