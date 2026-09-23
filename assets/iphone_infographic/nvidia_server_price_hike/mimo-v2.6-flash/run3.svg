@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D8E9FC"/>
+      <stop offset="100%" stop-color="#EDF4FF"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="2" stdDeviation="8" flood-color="#1E3A5F" flood-opacity="0.07"/>
+    </filter>
+    <filter id="smallShadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="1" stdDeviation="4" flood-color="#1E3A5F" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="390" height="844" fill="#F6F8FB"/>
+
+  <!-- ========== HEADER ========== -->
+  <rect x="0" y="0" width="390" height="82" fill="#FFFFFF"/>
+  <rect x="20" y="14" width="3" height="14" rx="1.5" fill="#4A90D9"/>
+  <text x="30" y="25" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="11" fill="#8896AB">财联社 8月23日讯（编辑 史正丞）</text>
+  <text x="20" y="53" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="18" font-weight="700" fill="#1A2332">英伟达服务器传出涨价消息</text>
+  <text x="20" y="75" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="15" font-weight="500" fill="#D4862E">涨幅"很多情况下超过15%"</text>
+  <line x1="0" y1="82" x2="390" y2="82" stroke="#E8ECF2" stroke-width="0.5"/>
+
+  <!-- ========== HERO ========== -->
+  <rect x="16" y="94" width="358" height="150" rx="16" fill="url(#heroGrad)" filter="url(#cardShadow)"/>
+  <!-- subtle chart -->
+  <polyline points="50,236 100,226 150,216 200,198 250,188 300,174 344,164" fill="none" stroke="#4A90D9" stroke-width="2" opacity="0.10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="195" y="123" text-anchor="middle" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12" font-weight="500" fill="#5A7A9B">英伟达服务器涨价幅度</text>
+  <text x="195" y="180" text-anchor="middle" font-family="Helvetica Neue, PingFang SC, sans-serif" font-size="56" font-weight="800" fill="#1B5DB8">15%+</text>
+  <text x="195" y="206" text-anchor="middle" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="13" fill="#4A6A8A">搭载英伟达AI芯片的服务器普遍提价</text>
+  <!-- chip tags -->
+  <rect x="86" y="214" width="84" height="20" rx="10" fill="white" opacity="0.65"/>
+  <text x="128" y="228" text-anchor="middle" font-family="Helvetica Neue, PingFang SC, sans-serif" font-size="11" font-weight="500" fill="#3A6EA5">Vera Rubin</text>
+  <rect x="180" y="214" width="124" height="20" rx="10" fill="white" opacity="0.65"/>
+  <text x="242" y="228" text-anchor="middle" font-family="Helvetica Neue, PingFang SC, sans-serif" font-size="11" font-weight="500" fill="#3A6EA5">Grace Blackwell</text>
+
+  <!-- ========== FACTOR CARD 1 ========== -->
+  <rect x="16" y="256" width="172" height="104" rx="12" fill="white" filter="url(#smallShadow)"/>
+  <rect x="16" y="256" width="172" height="4" rx="2" fill="#6BB5F0"/>
+  <circle cx="40" cy="287" r="13" fill="#EAF4FD"/>
+  <circle cx="40" cy="287" r="9" fill="none" stroke="#4A90D9" stroke-width="1.5"/>
+  <line x1="40" y1="287" x2="40" y2="281" stroke="#4A90D9" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="40" y1="287" x2="44.5" y2="289" stroke="#4A90D9" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="60" y="292" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="13" font-weight="600" fill="#1E293B">涨价时间</text>
+  <text x="32" y="318" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#4A5568">明年初出货的系统</text>
+  <text x="32" y="337" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#4A5568">将普遍提价</text>
+
+  <!-- ========== FACTOR CARD 2 ========== -->
+  <rect x="202" y="256" width="172" height="104" rx="12" fill="white" filter="url(#smallShadow)"/>
+  <rect x="202" y="256" width="172" height="4" rx="2" fill="#F5B84A"/>
+  <circle cx="226" cy="287" r="13" fill="#FEF5E7"/>
+  <polygon points="226,279 219,292 233,292" fill="#E8963E"/>
+  <text x="246" y="292" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="13" font-weight="600" fill="#1E293B">涨价原因</text>
+  <text x="218" y="318" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#4A5568">内存芯片成本飙升</text>
+  <text x="218" y="337" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#4A5568">DRAM价格大幅上涨</text>
+
+  <!-- ========== POINT 1 ========== -->
+  <rect x="16" y="372" width="358" height="72" rx="12" fill="white" filter="url(#smallShadow)"/>
+  <rect x="16" y="372" width="5" height="72" rx="2.5" fill="#4A90D9"/>
+  <circle cx="42" cy="396" r="13" fill="#4A90D9"/>
+  <text x="42" y="401" text-anchor="middle" font-family="Helvetica Neue, sans-serif" font-size="13" font-weight="700" fill="white">1</text>
+  <text x="64" y="394" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#374151">搭载英伟达Vera Rubin、Grace Blackwell等芯片的</text>
+  <text x="64" y="413" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#374151">服务器明年初起将普遍提价，涨幅超过15%</text>
+  <text x="64" y="431" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="11" fill="#9CA3AF">具体涨幅取决于芯片型号与内存配置</text>
+
+  <!-- ========== POINT 2 ========== -->
+  <rect x="16" y="456" width="358" height="72" rx="12" fill="white" filter="url(#smallShadow)"/>
+  <rect x="16" y="456" width="5" height="72" rx="2.5" fill="#5BBF8A"/>
+  <circle cx="42" cy="480" r="13" fill="#5BBF8A"/>
+  <text x="42" y="485" text-anchor="middle" font-family="Helvetica Neue, sans-serif" font-size="13" font-weight="700" fill="white">2</text>
+  <text x="64" y="478" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#374151">英伟达将于下周三美股盘后发布最新财报，</text>
+  <text x="64" y="497" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#374151">市场关注存储涨价是否会侵蚀算力龙头利润率</text>
+  <text x="64" y="515" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="11" fill="#9CA3AF">上季营收816亿美元，毛利率约75%</text>
+
+  <!-- ========== SECTION HEADER ========== -->
+  <rect x="16" y="544" width="4" height="16" rx="2" fill="#4A90D9"/>
+  <text x="28" y="558" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="14" font-weight="600" fill="#1A2332">关键数据</text>
+  <line x1="94" y1="552" x2="374" y2="552" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- ========== DATA CARD 1 ========== -->
+  <rect x="16" y="566" width="110" height="76" rx="10" fill="white" filter="url(#smallShadow)"/>
+  <text x="71" y="592" text-anchor="middle" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="11" fill="#8896AB">毛利率</text>
+  <text x="71" y="620" text-anchor="middle" font-family="Helvetica Neue, PingFang SC, sans-serif" font-size="24" font-weight="700" fill="#2B7BD6">75%</text>
+  <text x="71" y="637" text-anchor="middle" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="10" fill="#A0B0C0">维持74.9%-75%</text>
+
+  <!-- ========== DATA CARD 2 ========== -->
+  <rect x="140" y="566" width="110" height="76" rx="10" fill="white" filter="url(#smallShadow)"/>
+  <text x="195" y="592" text-anchor="middle" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="11" fill="#8896AB">季度营收</text>
+  <text x="195" y="620" text-anchor="middle" font-family="Helvetica Neue, PingFang SC, sans-serif" font-size="24" font-weight="700" fill="#3AAF74">$816亿</text>
+  <text x="195" y="637" text-anchor="middle" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="10" fill="#A0B0C0">上季财报</text>
+
+  <!-- ========== DATA CARD 3 ========== -->
+  <rect x="264" y="566" width="110" height="76" rx="10" fill="white" filter="url(#smallShadow)"/>
+  <text x="319" y="592" text-anchor="middle" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="11" fill="#8896AB">VR200单台</text>
+  <text x="319" y="620" text-anchor="middle" font-family="Helvetica Neue, PingFang SC, sans-serif" font-size="24" font-weight="700" fill="#D4862E">$500万+</text>
+  <text x="319" y="637" text-anchor="middle" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="10" fill="#A0B0C0">出货询价</text>
+
+  <!-- ========== MARKET OUTLOOK ========== -->
+  <rect x="16" y="654" width="358" height="160" rx="14" fill="white" filter="url(#cardShadow)"/>
+  <rect x="16" y="654" width="5" height="160" rx="2.5" fill="#8B7DD6"/>
+  <text x="36" y="684" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="14" font-weight="600" fill="#1A2332">市场展望</text>
+
+  <circle cx="44" cy="710" r="3" fill="#8B7DD6"/>
+  <text x="56" y="714" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#4A5568">服务器代工企业已通知客户价格即将上调</text>
+
+  <circle cx="44" cy="744" r="3" fill="#8B7DD6"/>
+  <text x="56" y="748" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#4A5568">亚马逊、微软等云厂商自研芯片获新发展动力</text>
+
+  <circle cx="44" cy="778" r="3" fill="#8B7DD6"/>
+  <text x="56" y="782" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#4A5568">英伟达软件体系"护城河"使多数客户仍高度</text>
+  <text x="56" y="801" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="12.5" fill="#4A5568">依赖采购英伟达芯片</text>
+
+  <!-- ========== BOTTOM INDICATOR ========== -->
+  <rect x="145" y="834" width="100" height="4" rx="2" fill="#C8D0DC"/>
+</svg>
