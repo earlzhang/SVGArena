@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844">
+  <defs>
+    <style type="text/css"><![CDATA[
+      text { font-family: 'PingFang SC', 'Helvetica Neue', sans-serif; }
+    ]]></style>
+    <linearGradient id="hg" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0%" stop-color="#E85D26"/>
+      <stop offset="100%" stop-color="#FF8C42"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="390" height="844" fill="#F2F2F7"/>
+
+  <!-- Header -->
+  <rect width="390" height="136" fill="url(#hg)"/>
+  <circle cx="375" cy="12" r="55" fill="#fff" opacity="0.06"/>
+  <circle cx="355" cy="78" r="38" fill="#fff" opacity="0.05"/>
+  <text x="24" y="34" fill="#fff" opacity="0.7" font-size="11">财联社 · 8月23日讯</text>
+  <text x="24" y="64" fill="#fff" font-size="21" font-weight="600">英伟达服务器传出涨价消息</text>
+  <text x="24" y="92" fill="#fff" opacity="0.85" font-size="14">涨幅"很多情况下超过15%"</text>
+  <text x="24" y="118" fill="#fff" opacity="0.5" font-size="10">内存芯片成本飙升 · 多家最大客户已被告知</text>
+
+  <!-- ===== HERO CARD ===== -->
+  <rect x="20" y="152" width="350" height="148" rx="16" fill="#fff"/>
+  <rect x="20" y="152" width="350" height="3.5" rx="1.75" fill="#E85D26"/>
+  <text x="42" y="180" fill="#999" font-size="11">多家"英伟达最大客户"被告知服务器涨价</text>
+
+  <text x="42" y="246" fill="#E85D26" font-size="54" font-weight="bold">&gt;15%</text>
+  <polygon points="222,220 232,204 242,220" fill="#E85D26" opacity="0.3"/>
+  <text x="222" y="238" fill="#333" font-size="15" font-weight="500">涨幅</text>
+  <text x="222" y="256" fill="#888" font-size="11">很多情况下</text>
+
+  <text x="42" y="278" fill="#666" font-size="11">适用于 Vera Rubin / Grace Blackwell 芯片服务器</text>
+  <text x="42" y="294" fill="#999" font-size="10">2026年初出货系统 · 代工厂已通知客户价格上调</text>
+
+  <!-- ===== PRICE CHART CARD ===== -->
+  <rect x="20" y="316" width="350" height="184" rx="16" fill="#fff"/>
+  <rect x="20" y="316" width="350" height="3.5" rx="1.75" fill="#FFB088"/>
+
+  <rect x="42" y="340" width="3" height="13" rx="1.5" fill="#E85D26"/>
+  <text x="52" y="350" fill="#1C1C1E" font-size="13" font-weight="600">服务器单价参考</text>
+
+  <text x="42" y="380" fill="#888" font-size="10">NVL72 GB200</text>
+  <rect x="42" y="386" width="260" height="22" rx="4" fill="#F2F2F7"/>
+  <rect x="42" y="386" width="113" height="22" rx="4" fill="#FFB088"/>
+  <text x="163" y="401" fill="#666" font-size="11">$280-340万</text>
+
+  <text x="42" y="425" fill="#888" font-size="10">NVL72 VR200</text>
+  <rect x="42" y="431" width="260" height="22" rx="4" fill="#F2F2F7"/>
+  <rect x="42" y="431" width="224" height="22" rx="4" fill="#E85D26"/>
+  <text x="168" y="446" fill="#fff" font-size="11" font-weight="500">$500-700万</text>
+
+  <rect x="42" y="464" width="290" height="28" rx="8" fill="#FFF4EE"/>
+  <text x="56" y="482" fill="#E85D26" font-size="11" font-weight="500">15%涨幅 ≈ 额外数十万至近百万美元 / 台</text>
+
+  <!-- ===== SMALL CARD: CONSUMER ===== -->
+  <rect x="20" y="516" width="168" height="134" rx="14" fill="#fff"/>
+  <rect x="20" y="516" width="168" height="3" rx="1.5" fill="#FFB088"/>
+  <rect x="36" y="536" width="3" height="12" rx="1.5" fill="#E85D26"/>
+  <text x="46" y="546" fill="#E85D26" font-size="10" font-weight="600">消费端影响</text>
+  <text x="36" y="572" fill="#1C1C1E" font-size="12" font-weight="500">RTX 5080 显卡</text>
+  <text x="36" y="598" fill="#999" font-size="12">¥8,000</text>
+  <text x="96" y="598" fill="#E85D26" font-size="13" font-weight="bold">→ ¥12,000</text>
+  <rect x="36" y="608" width="130" height="6" rx="3" fill="#F2F2F7"/>
+  <rect x="36" y="608" width="87" height="6" rx="3" fill="#FFB088"/>
+  <rect x="36" y="620" width="130" height="6" rx="3" fill="#E85D26"/>
+  <text x="36" y="642" fill="#888" font-size="10">1个月涨幅约50%</text>
+
+  <!-- ===== SMALL CARD: MARKET ===== -->
+  <rect x="202" y="516" width="168" height="134" rx="14" fill="#fff"/>
+  <rect x="202" y="516" width="168" height="3" rx="1.5" fill="#A3C9FF"/>
+  <rect x="218" y="536" width="3" height="12" rx="1.5" fill="#007AFF"/>
+  <text x="228" y="546" fill="#007AFF" font-size="10" font-weight="600">市场关注</text>
+  <text x="218" y="572" fill="#1C1C1E" font-size="12" font-weight="500">英伟达毛利率</text>
+  <text x="218" y="605" fill="#34C759" font-size="30" font-weight="bold">75%</text>
+  <text x="218" y="625" fill="#888" font-size="10">存储涨价或侵蚀利润率</text>
+  <text x="218" y="642" fill="#007AFF" font-size="10">下周三美股盘后发布财报</text>
+
+  <!-- ===== IMPACT CHAIN CARD ===== -->
+  <rect x="20" y="666" width="350" height="164" rx="16" fill="#fff"/>
+  <rect x="20" y="666" width="350" height="3" rx="1.5" fill="#D1D1D6"/>
+  <rect x="42" y="690" width="3" height="13" rx="1.5" fill="#E85D26"/>
+  <text x="52" y="700" fill="#1C1C1E" font-size="13" font-weight="600">连锁影响</text>
+
+  <line x1="56" y1="736" x2="56" y2="748" stroke="#E8C4B0" stroke-width="1.5"/>
+  <line x1="56" y1="764" x2="56" y2="776" stroke="#E8C4B0" stroke-width="1.5"/>
+
+  <circle cx="56" cy="728" r="8" fill="#FFF0E8"/>
+  <text x="52.5" y="732" fill="#E85D26" font-size="10" font-weight="bold">1</text>
+  <text x="74" y="732" fill="#333" font-size="11">DRAM 存储芯片价格大幅上涨</text>
+
+  <circle cx="56" cy="756" r="8" fill="#FFF0E8"/>
+  <text x="52.5" y="760" fill="#E85D26" font-size="10" font-weight="bold">2</text>
+  <text x="74" y="760" fill="#333" font-size="11">AI 服务器成本飙升，英伟达毛利率承压</text>
+
+  <circle cx="56" cy="784" r="8" fill="#FFF0E8"/>
+  <text x="52.5" y="788" fill="#E85D26" font-size="10" font-weight="bold">3</text>
+  <text x="74" y="788" fill="#333" font-size="11">亚马逊、微软等大型客户加速推进自研芯片</text>
+
+  <text x="42" y="816" fill="#CCC" font-size="9">数据来源：财联社 · 价格单位：美元</text>
+</svg>

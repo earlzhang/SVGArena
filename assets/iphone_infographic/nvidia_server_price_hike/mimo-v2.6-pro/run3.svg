@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 812" width="375" height="812">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadow2" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="375" height="812" rx="0" fill="#f0f2f7"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="375" height="100" fill="#e8ebf3"/>
+  <text x="187" y="36" text-anchor="middle" font-family="PingFang SC" font-size="13" font-weight="600" fill="#8892a6" letter-spacing="3">财 联 社 · 要 闻</text>
+  <text x="187" y="62" text-anchor="middle" font-family="PingFang SC" font-size="19" font-weight="bold" fill="#2d3440">英伟达服务器涨价消息</text>
+  <text x="187" y="85" text-anchor="middle" font-family="PingFang SC" font-size="13" fill="#6b7a8d">涨幅"很多情况下超过15%"</text>
+
+  <!-- Key Highlight Card -->
+  <rect x="16" y="112" width="343" height="96" rx="14" fill="#ffffff" filter="url(#shadow)"/>
+  <rect x="16" y="112" width="5" height="96" rx="2.5" fill="#e05555"/>
+  <text x="38" y="138" font-family="PingFang SC" font-size="11" fill="#a0a8b8" letter-spacing="1">核心要点</text>
+  <text x="38" y="162" font-family="PingFang SC" font-size="15" font-weight="bold" fill="#2d3440">内存成本飙升 → 服务器普涨</text>
+  <text x="38" y="184" font-family="PingFang SC" font-size="13" fill="#5a6678">明年初出货的英伟达芯片服务器价格</text>
+  <text x="38" y="201" font-family="PingFang SC" font-size="13" fill="#5a6678">将大幅上调，多数涨幅超 <tspan font-weight="bold" fill="#e05555">15%</tspan></text>
+
+  <!-- Price Section Title -->
+  <text x="24" y="236" font-family="PingFang SC" font-size="12" font-weight="600" fill="#8892a6" letter-spacing="1">▸ 受影响的服务器系统</text>
+
+  <!-- Price Cards Row -->
+  <!-- Card 1: GB200 -->
+  <rect x="16" y="246" width="108" height="108" rx="12" fill="#ffffff" filter="url(#shadow2)"/>
+  <rect x="16" y="246" width="108" height="32" rx="12" fill="#e3edfa"/>
+  <rect x="16" y="266" width="108" height="12" fill="#e3edfa"/>
+  <text x="70" y="267" text-anchor="middle" font-family="PingFang SC" font-size="11" font-weight="600" fill="#4a7ab5">Grace Blackwell</text>
+  <text x="70" y="298" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#8892a6">NVL72 GB200</text>
+  <text x="70" y="322" text-anchor="middle" font-family="PingFang SC" font-size="18" font-weight="bold" fill="#2d3440">$280-340万</text>
+  <text x="70" y="343" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#a0a8b8">当前报价区间</text>
+
+  <!-- Card 2: VR200 -->
+  <rect x="133" y="246" width="108" height="108" rx="12" fill="#ffffff" filter="url(#shadow2)"/>
+  <rect x="133" y="246" width="108" height="32" rx="12" fill="#e8f5e3"/>
+  <rect x="133" y="266" width="108" height="12" fill="#e8f5e3"/>
+  <text x="187" y="267" text-anchor="middle" font-family="PingFang SC" font-size="11" font-weight="600" fill="#4a8a3a">Vera Rubin</text>
+  <text x="187" y="298" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#8892a6">NVL72 VR200</text>
+  <text x="187" y="322" text-anchor="middle" font-family="PingFang SC" font-size="18" font-weight="bold" fill="#e05555">$500-700万</text>
+  <text x="187" y="343" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#a0a8b8">出货前询价</text>
+
+  <!-- Card 3: RTX 5080 -->
+  <rect x="250" y="246" width="108" height="108" rx="12" fill="#ffffff" filter="url(#shadow2)"/>
+  <rect x="250" y="246" width="108" height="32" rx="12" fill="#faf3e0"/>
+  <rect x="250" y="266" width="108" height="12" fill="#faf3e0"/>
+  <text x="304" y="267" text-anchor="middle" font-family="PingFang SC" font-size="11" font-weight="600" fill="#b88a2a">消费级参考</text>
+  <text x="304" y="298" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#8892a6">RTX 5080 显卡</text>
+  <text x="304" y="322" text-anchor="middle" font-family="PingFang SC" font-size="18" font-weight="bold" fill="#e05555">¥8000→1.2万</text>
+  <text x="304" y="343" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#a0a8b8">1个月内跳涨</text>
+
+  <!-- Impact Section -->
+  <text x="24" y="380" font-family="PingFang SC" font-size="12" font-weight="600" fill="#8892a6" letter-spacing="1">▸ 涨价传导链条</text>
+
+  <!-- Flow Chart -->
+  <rect x="16" y="390" width="343" height="82" rx="12" fill="#ffffff" filter="url(#shadow2)"/>
+  
+  <!-- Flow Node 1 -->
+  <rect x="30" y="404" width="82" height="52" rx="8" fill="#fff0f0"/>
+  <text x="71" y="426" text-anchor="middle" font-family="PingFang SC" font-size="11" font-weight="600" fill="#c44040">DRAM涨价</text>
+  <text x="71" y="444" text-anchor="middle" font-family="PingFang SC" font-size="9" fill="#a0a8b8">存储成本飙升</text>
+  
+  <!-- Arrow 1 -->
+  <polygon points="118,430 128,425 128,435" fill="#c0c8d4"/>
+  
+  <!-- Flow Node 2 -->
+  <rect x="134" y="404" width="82" height="52" rx="8" fill="#fff8e0"/>
+  <text x="175" y="426" text-anchor="middle" font-family="PingFang SC" font-size="11" font-weight="600" fill="#b88a2a">服务器涨价</text>
+  <text x="175" y="444" text-anchor="middle" font-family="PingFang SC" font-size="9" fill="#a0a8b8">涨幅超15%</text>
+  
+  <!-- Arrow 2 -->
+  <polygon points="222,430 232,425 232,435" fill="#c0c8d4"/>
+  
+  <!-- Flow Node 3 -->
+  <rect x="238" y="404" width="82" height="52" rx="8" fill="#f0f0ff"/>
+  <text x="279" y="426" text-anchor="middle" font-family="PingFang SC" font-size="11" font-weight="600" fill="#6a5ab0">利润率承压</text>
+  <text x="279" y="444" text-anchor="middle" font-family="PingFang SC" font-size="9" fill="#a0a8b8">毛利率75%面临审视</text>
+
+  <!-- Financial Metrics Section -->
+  <text x="24" y="498" font-family="PingFang SC" font-size="12" font-weight="600" fill="#8892a6" letter-spacing="1">▸ 关键财务数据与市场焦点</text>
+
+  <!-- Metrics Row -->
+  <rect x="16" y="508" width="108" height="72" rx="12" fill="#ffffff" filter="url(#shadow2)"/>
+  <text x="70" y="532" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#a0a8b8">上季度营收</text>
+  <text x="70" y="558" text-anchor="middle" font-family="PingFang SC" font-size="17" font-weight="bold" fill="#2d3440">$816亿</text>
+  <text x="70" y="573" text-anchor="middle" font-family="PingFang SC" font-size="9" fill="#a0a8b8">同比大增</text>
+
+  <rect x="133" y="508" width="108" height="72" rx="12" fill="#ffffff" filter="url(#shadow2)"/>
+  <text x="187" y="532" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#a0a8b8">毛利率</text>
+  <text x="187" y="558" text-anchor="middle" font-family="PingFang SC" font-size="17" font-weight="bold" fill="#4a8a3a">~75%</text>
+  <text x="187" y="573" text-anchor="middle" font-family="PingFang SC" font-size="9" fill="#a0a8b8">去年同期 60.5%</text>
+
+  <rect x="250" y="508" width="108" height="72" rx="12" fill="#ffffff" filter="url(#shadow2)"/>
+  <text x="304" y="532" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#a0a8b8">财报发布</text>
+  <text x="304" y="558" text-anchor="middle" font-family="PingFang SC" font-size="17" font-weight="bold" fill="#c44040">下周三</text>
+  <text x="304" y="573" text-anchor="middle" font-family="PingFang SC" font-size="9" fill="#a0a8b8">美股盘后</text>
+
+  <!-- Key Insight Card -->
+  <rect x="16" y="596" width="343" height="108" rx="14" fill="#ffffff" filter="url(#shadow)"/>
+  <rect x="16" y="596" width="5" height="108" rx="2.5" fill="#4a7ab5"/>
+  <text x="38" y="620" font-family="PingFang SC" font-size="11" fill="#a0a8b8" letter-spacing="1">深层影响</text>
+  
+  <!-- Bullet points -->
+  <circle cx="44" cy="641" r="3" fill="#4a7ab5"/>
+  <text x="54" y="645" font-family="PingFang SC" font-size="11.5" fill="#3a4554">云服务商加速自研芯片（亚马逊、微软、谷歌、Meta）</text>
+  
+  <circle cx="44" cy="663" r="3" fill="#4a7ab5"/>
+  <text x="54" y="667" font-family="PingFang SC" font-size="11.5" fill="#3a4554">存储厂商话语权空前提升（三星、SK海力士、美光）</text>
+  
+  <circle cx="44" cy="685" r="3" fill="#4a7ab5"/>
+  <text x="54" y="689" font-family="PingFang SC" font-size="11.5" fill="#3a4554">苹果、高通等因芯片短缺被迫提价</text>
+
+  <!-- Bottom Tags -->
+  <rect x="16" y="718" width="343" height="50" rx="12" fill="#e8ebf3"/>
+  <text x="187" y="738" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#8892a6">8月23日讯 · 编辑 史正丞</text>
+  <text x="187" y="757" text-anchor="middle" font-family="PingFang SC" font-size="10" fill="#a0a8b8">关注存储涨价是否侵蚀算力芯片龙头利润率</text>
+
+  <!-- Bottom accent bar -->
+  <rect x="130" y="784" width="115" height="4" rx="2" fill="#d0d5de"/>
+</svg>
