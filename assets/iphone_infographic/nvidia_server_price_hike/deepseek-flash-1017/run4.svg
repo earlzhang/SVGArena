@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="780" viewBox="0 0 390 780" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','STHeiti',sans-serif">
+  <defs>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#0F1B2D" flood-opacity="0.07"/>
+    </filter>
+    <linearGradient id="topGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#76B900"/>
+      <stop offset="1" stop-color="#C9E48C"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="390" height="780" fill="#EEF1F6"/>
+  <rect width="390" height="4" fill="url(#topGrad)"/>
+
+  <!-- Header -->
+  <rect x="16" y="27" width="3" height="11" rx="1.5" fill="#76B900"/>
+  <text x="26" y="37" font-size="10" fill="#8A94A6">财联社 · 8月23日讯</text>
+
+  <text x="16" y="68" font-size="22" font-weight="700" fill="#101B2D">英伟达服务器涨价</text>
+  <text x="374" y="68" font-size="30" font-weight="700" fill="#D93A2B" text-anchor="end">15%+</text>
+
+  <text x="16" y="91" font-size="11.5" fill="#6B7686">明年初起，搭载英伟达芯片的服务器普遍提价</text>
+
+  <!-- Card 1: 原因 -->
+  <rect x="16" y="110" width="358" height="64" rx="16" fill="#FFFFFF" filter="url(#sh)"/>
+  <circle cx="48" cy="142" r="18" fill="#F0F7E4"/>
+  <rect x="39" y="135" width="18" height="16" rx="2.5" fill="#76B900"/>
+  <line x1="44" y1="139" x2="44" y2="147" stroke="#FFFFFF" stroke-width="1.4"/>
+  <line x1="48" y1="139" x2="48" y2="147" stroke="#FFFFFF" stroke-width="1.4"/>
+  <line x1="52" y1="139" x2="52" y2="147" stroke="#FFFFFF" stroke-width="1.4"/>
+  <text x="76" y="137" font-size="12.5" font-weight="600" fill="#101B2D">内存芯片成本飙升</text>
+  <text x="76" y="155" font-size="10.5" fill="#6B7686">DRAM涨价传导至整机，客户已被告知</text>
+
+  <!-- Card 2: 范围 -->
+  <rect x="16" y="182" width="358" height="88" rx="16" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="32" y="206" font-size="12" font-weight="600" fill="#101B2D">受影响产品与时间</text>
+  <rect x="32" y="216" width="100" height="28" rx="14" fill="#F2F8E8" stroke="#DCEBC0" stroke-width="1"/>
+  <text x="82" y="234" font-size="10.5" fill="#4D7A00" text-anchor="middle">Vera Rubin</text>
+  <rect x="140" y="216" width="124" height="28" rx="14" fill="#F2F8E8" stroke="#DCEBC0" stroke-width="1"/>
+  <text x="202" y="234" font-size="10.5" fill="#4D7A00" text-anchor="middle">Grace Blackwell</text>
+  <text x="32" y="260" font-size="10.5" fill="#6B7686">明年初起出货；涨幅取决于芯片型号与内存配置</text>
+
+  <!-- Card 3: 服务器价格 -->
+  <rect x="16" y="278" width="358" height="166" rx="16" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="32" y="302" font-size="12" font-weight="600" fill="#101B2D">AI服务器有多贵</text>
+  <text x="358" y="302" font-size="9.5" fill="#9AA4B2" text-anchor="end">单台售价</text>
+
+  <text x="32" y="322" font-size="10.5" fill="#6B7686">GB200 NVL72（Blackwell）</text>
+  <text x="32" y="344" font-size="16" font-weight="700" fill="#101B2D">280–340</text>
+  <text x="101" y="344" font-size="9.5" fill="#6B7686">万美元</text>
+  <rect x="150" y="335" width="208" height="9" rx="4.5" fill="#EFF2F6"/>
+  <rect x="150" y="335" width="101" height="9" rx="4.5" fill="#76B900"/>
+
+  <line x1="32" y1="356" x2="358" y2="356" stroke="#F2F4F8" stroke-width="1"/>
+
+  <text x="32" y="380" font-size="10.5" fill="#6B7686">VR200 NVL72（Vera Rubin）</text>
+  <text x="32" y="402" font-size="16" font-weight="700" fill="#D93A2B">500–700</text>
+  <text x="101" y="402" font-size="9.5" fill="#6B7686">万美元</text>
+  <rect x="150" y="393" width="208" height="9" rx="4.5" fill="#EFF2F6"/>
+  <rect x="150" y="393" width="208" height="9" rx="4.5" fill="#E14B32"/>
+
+  <rect x="32" y="412" width="326" height="24" rx="8" fill="#FCF1EE"/>
+  <text x="44" y="428" font-size="9.5" fill="#B33A20">15% 的涨幅 ≈ 每台多花数十万至近百万美元</text>
+
+  <!-- Card 4: 消费端 -->
+  <rect x="16" y="452" width="358" height="72" rx="16" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="32" y="476" font-size="12" font-weight="600" fill="#101B2D">消费端显卡已先涨一轮</text>
+  <rect x="280" y="462" width="78" height="22" rx="11" fill="#F5F6F8"/>
+  <text x="319" y="477" font-size="10" fill="#6B7686" text-anchor="middle">RTX 5080</text>
+
+  <text x="32" y="500" font-size="9" fill="#A3ACBA">1个月前</text>
+  <text x="32" y="514" font-size="16" font-weight="700" fill="#8A94A6">8000元</text>
+
+  <line x1="112" y1="506" x2="148" y2="506" stroke="#D93A2B" stroke-width="2"/>
+  <polygon points="154,506 145,501 145,511" fill="#D93A2B"/>
+
+  <text x="166" y="500" font-size="9" fill="#D93A2B">现价</text>
+  <text x="166" y="514" font-size="16" font-weight="700" fill="#D93A2B">1.2万元</text>
+
+  <text x="358" y="514" font-size="9.5" fill="#9AA4B2" text-anchor="end">一个月涨幅约50%</text>
+
+  <!-- Card 5: 财报 -->
+  <rect x="16" y="532" width="358" height="96" rx="16" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="32" y="556" font-size="12" font-weight="600" fill="#101B2D">下周财报：毛利率能否守住</text>
+
+  <text x="32" y="588" font-size="22" font-weight="700" fill="#2F6BFF">75%</text>
+  <text x="76" y="588" font-size="10.5" fill="#6B7686">毛利率</text>
+  <text x="358" y="588" font-size="10" fill="#9AA4B2" text-anchor="end">上财年同期 60.5%</text>
+
+  <rect x="32" y="598" width="200" height="9" rx="4.5" fill="#EDF0F5"/>
+  <rect x="32" y="598" width="150" height="9" rx="4.5" fill="#2F6BFF"/>
+
+  <text x="32" y="620" font-size="9.5" fill="#6B7686">公司指引本财季毛利率 74.9%–75%</text>
+  <text x="358" y="620" font-size="9.5" fill="#D93A2B" text-anchor="end">下周三美股盘后发布</text>
+
+  <!-- Card 6: 连锁反应 -->
+  <rect x="16" y="636" width="358" height="104" rx="16" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="32" y="660" font-size="12" font-weight="600" fill="#101B2D">连锁反应</text>
+
+  <circle cx="37" cy="679" r="3" fill="#76B900"/>
+  <text x="48" y="683" font-size="10.5" fill="#101B2D">大型云厂商自研芯片动力增强</text>
+  <text x="48" y="698" font-size="9" fill="#9AA4B2">亚马逊 · 微软 · 谷歌 · Meta</text>
+
+  <circle cx="37" cy="717" r="3" fill="#E14B32"/>
+  <text x="48" y="721" font-size="10.5" fill="#101B2D">但英伟达软件生态仍是护城河</text>
+
+  <!-- Footer -->
+  <text x="195" y="762" font-size="9" fill="#A3ACBA" text-anchor="middle">来源：财联社 2025.08.23 ｜ 编辑 史正丞</text>
+</svg>
