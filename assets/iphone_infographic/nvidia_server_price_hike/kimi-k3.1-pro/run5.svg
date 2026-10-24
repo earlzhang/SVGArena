@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-labelledby="svgTitle svgDesc">
+  <title id="svgTitle">英伟达服务器传出涨价消息，很多情况下涨幅超过15%</title>
+  <desc id="svgDesc">信息图呈现涨价时间、原因、服务器价格、消费端显卡涨价、财报利润率焦点及产业链影响。</desc>
+  <defs>
+    <linearGradient id="topBg" x1="0" y1="0" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EEF5E6"/>
+      <stop offset="55%" stop-color="#F3F6FB"/>
+      <stop offset="100%" stop-color="#F6F8FC" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="heroFill" x1="0" y1="0" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F5FAEE"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-12%" y="-12%" width="124%" height="135%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#64748B" flood-opacity="0.07"/>
+    </filter>
+    <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#C7D0DC"/>
+    </marker>
+  </defs>
+
+  <rect width="390" height="844" fill="#F6F8FC"/>
+  <rect width="390" height="245" fill="url(#topBg)"/>
+  <circle cx="374" cy="8" r="72" fill="#E6F0D8" opacity="0.48"/>
+  <circle cx="286" cy="4" r="38" fill="#E9F0FC" opacity="0.6"/>
+
+  <g font-family="PingFang SC, Hiragino Sans GB, STHeiti">
+    <!-- 顶部标题 -->
+    <circle cx="21" cy="21" r="3" fill="#76B900"/>
+    <text x="30" y="25" font-size="10.5" fill="#728096" letter-spacing="0.2">财联社 · 8月23日｜据媒体报道</text>
+
+    <text x="20" y="64" font-size="26" font-weight="700" fill="#172033" letter-spacing="0.3">英伟达服务器</text>
+    <text x="20" y="97" font-size="26" font-weight="700" fill="#172033" letter-spacing="0.3">传出涨价消息</text>
+    <text x="20" y="121" font-size="12" fill="#64748B">涨价的风，正从显卡吹向AI算力服务器</text>
+
+    <!-- 芯片装饰图标 -->
+    <g transform="translate(315 28)">
+      <rect width="44" height="44" rx="13" fill="#E7F0DA"/>
+      <rect x="12" y="12" width="20" height="20" rx="5" fill="#FFFFFF" stroke="#76B900" stroke-width="1.4"/>
+      <path d="M8 16H12 M8 22H12 M8 28H12 M32 16H36 M32 22H36 M32 28H36 M16 8V12 M22 8V12 M28 8V12 M16 32V36 M22 32V36 M28 32V36" stroke="#76B900" stroke-width="1.3" stroke-linecap="round"/>
+      <text x="22" y="25.5" text-anchor="middle" font-size="9" font-weight="700" fill="#638F00">AI</text>
+    </g>
+
+    <!-- 核心涨幅 -->
+    <rect x="16" y="137" width="358" height="136" rx="18" fill="url(#heroFill)" stroke="#E6EDDC" filter="url(#cardShadow)"/>
+    <text x="32" y="161" font-size="11" fill="#64748B">很多情况下</text>
+    <text x="32" y="208" font-size="43" font-weight="800" fill="#5E8C00" letter-spacing="-1.5">&gt;15%</text>
+    <rect x="32" y="216" width="108" height="4" rx="2" fill="#D7EBB6"/>
+    <text x="32" y="235" font-size="11.5" font-weight="600" fill="#334155">服务器价格涨幅</text>
+    <text x="32" y="256" font-size="10" fill="#7A8698">多家大客户已获通知</text>
+
+    <line x1="216" y1="156" x2="216" y2="256" stroke="#E3E9E5"/>
+    <text x="232" y="161" font-size="11" fill="#64748B">涉及系统</text>
+    <text x="232" y="186" font-size="18" font-weight="700" fill="#172033">明年初起</text>
+    <text x="232" y="205" font-size="10.5" fill="#7A8698">出货的服务器</text>
+    <rect x="231" y="215" width="125" height="20" rx="7" fill="#EAF3DE"/>
+    <text x="293.5" y="229" text-anchor="middle" font-size="10.5" font-weight="600" fill="#587B20">Vera Rubin</text>
+    <rect x="231" y="240" width="125" height="20" rx="7" fill="#EDF2F8"/>
+    <text x="293.5" y="254" text-anchor="middle" font-size="10.5" font-weight="600" fill="#52647D">Grace Blackwell</text>
+
+    <!-- 涨价传导链 -->
+    <rect x="16" y="285" width="358" height="101" rx="16" fill="#FFFFFF" stroke="#EDF1F5" filter="url(#cardShadow)"/>
+    <text x="32" y="309" font-size="13" font-weight="700" fill="#172033">为什么涨？</text>
+    <text x="358" y="309" text-anchor="end" font-size="9.5" fill="#8A96A7">AI芯片性能高度依赖DRAM</text>
+
+    <circle cx="64" cy="337" r="15" fill="#EDF3FF"/>
+    <path d="M57 342V337 M63 342V332 M69 342V327" stroke="#6389E8" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M56 331 L61 328 L65 329 L71 323" fill="none" stroke="#6389E8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <line x1="85" y1="337" x2="171" y2="337" stroke="#C7D0DC" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+    <circle cx="195" cy="337" r="15" fill="#FFF3E5"/>
+    <rect x="187" y="331" width="16" height="13" rx="2.5" fill="none" stroke="#D89543" stroke-width="1.4"/>
+    <path d="M190 328V331 M195 328V331 M200 328V331 M190 344V347 M195 344V347 M200 344V347 M190 335H200 M190 339H197" stroke="#D89543" stroke-width="1.1" stroke-linecap="round"/>
+
+    <line x1="216" y1="337" x2="301" y2="337" stroke="#C7D0DC" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+    <circle cx="326" cy="337" r="15" fill="#EDF6E5"/>
+    <rect x="318" y="328" width="16" height="18" rx="3" fill="none" stroke="#6E9B28" stroke-width="1.4"/>
+    <path d="M318 334H334 M318 340H334" stroke="#6E9B28" stroke-width="1.1"/>
+    <circle cx="321.5" cy="331" r="1" fill="#6E9B28"/>
+    <circle cx="321.5" cy="337" r="1" fill="#6E9B28"/>
+    <circle cx="321.5" cy="343" r="1" fill="#6E9B28"/>
+
+    <text x="64" y="371" text-anchor="middle" font-size="11" font-weight="500" fill="#42516A">算力需求激增</text>
+    <text x="195" y="371" text-anchor="middle" font-size="11" font-weight="500" fill="#42516A">DRAM成本飙升</text>
+    <text x="326" y="371" text-anchor="middle" font-size="11" font-weight="500" fill="#42516A">服务器普遍提价</text>
+
+    <!-- 价格对比 -->
+    <rect x="16" y="398" width="358" height="156" rx="16" fill="#FFFFFF" stroke="#EDF1F5" filter="url(#cardShadow)"/>
+    <text x="32" y="422" font-size="13" font-weight="700" fill="#172033">价格已经多高？</text>
+    <text x="358" y="422" text-anchor="end" font-size="9.5" fill="#94A3B8">消费端 → 服务器</text>
+
+    <rect x="28" y="433" width="334" height="29" rx="9" fill="#F3F6FD"/>
+    <text x="40" y="452" font-size="10.5" font-weight="700" fill="#5878C6">RTX 5080</text>
+    <text x="115" y="452" font-size="10.5" fill="#56657B">1个月：约0.8万 → 1.2万元</text>
+
+    <text x="32" y="484" font-size="10.5" fill="#526177">GB200 NVL72</text>
+    <text x="358" y="484" text-anchor="end" font-size="11" font-weight="700" fill="#334155">280万–340万美元</text>
+    <rect x="32" y="491" width="326" height="7" rx="3.5" fill="#F0F3F8"/>
+    <rect x="32" y="491" width="130" height="7" rx="3.5" fill="#C9D8FB"/>
+    <rect x="159" y="491" width="31" height="7" rx="3.5" fill="#6C8FF8"/>
+
+    <text x="32" y="516" font-size="10.5" fill="#526177">VR200 NVL72 · 询价</text>
+    <text x="358" y="516" text-anchor="end" font-size="11" font-weight="700" fill="#334155">500万–700万美元</text>
+    <rect x="32" y="523" width="326" height="7" rx="3.5" fill="#F0F3F8"/>
+    <rect x="32" y="523" width="233" height="7" rx="3.5" fill="#DCEACB"/>
+    <rect x="262" y="523" width="96" height="7" rx="3.5" fill="#76B900"/>
+
+    <text x="32" y="545" font-size="10" fill="#7A8698">15%涨幅，也可能带来大几十万、近百万美元的额外开销</text>
+
+    <!-- 财报与利润率 -->
+    <rect x="16" y="566" width="358" height="146" rx="16" fill="#FFFFFF" stroke="#EDF1F5" filter="url(#cardShadow)"/>
+    <text x="32" y="590" font-size="13" font-weight="700" fill="#172033">下周财报：利润率成焦点</text>
+    <rect x="274" y="576" width="84" height="20" rx="7" fill="#EDF3FF"/>
+    <text x="316" y="590" text-anchor="middle" font-size="9.5" font-weight="600" fill="#5D77AE">下周三·盘后</text>
+    <text x="32" y="611" font-size="10.5" fill="#64748B">市场追问：存储涨价会否侵蚀利润率？</text>
+
+    <text x="32" y="636" font-size="10.5" fill="#66758A">上年同期</text>
+    <rect x="99" y="628" width="177" height="8" rx="4" fill="#F0F3F7"/>
+    <rect x="99" y="628" width="107" height="8" rx="4" fill="#AEBBD0"/>
+    <text x="358" y="636" text-anchor="end" font-size="11" font-weight="700" fill="#536176">60.5%</text>
+
+    <text x="32" y="658" font-size="10.5" fill="#66758A">最近季度</text>
+    <rect x="99" y="650" width="177" height="8" rx="4" fill="#F0F3F7"/>
+    <rect x="99" y="650" width="133" height="8" rx="4" fill="#76B900"/>
+    <text x="358" y="658" text-anchor="end" font-size="11" font-weight="700" fill="#4E6D22">约75%</text>
+
+    <text x="32" y="680" font-size="10.5" fill="#66758A">本季指引</text>
+    <rect x="99" y="672" width="177" height="8" rx="4" fill="#F0F3F7"/>
+    <rect x="99" y="672" width="132" height="8" rx="4" fill="#B3CF83"/>
+    <text x="358" y="680" text-anchor="end" font-size="10.5" font-weight="700" fill="#536176">74.9%–75%</text>
+
+    <text x="32" y="701" font-size="10" fill="#7A8698">上季营收 816亿美元｜高毛利能否延续，成为财报关键</text>
+
+    <!-- 产业链影响 -->
+    <rect x="16" y="724" width="358" height="82" rx="16" fill="#FFFFFF" stroke="#EDF1F5" filter="url(#cardShadow)"/>
+    <rect x="32" y="735" width="3" height="12" rx="1.5" fill="#76B900"/>
+    <text x="42" y="746" font-size="12" font-weight="700" fill="#172033">产业链的下一步</text>
+
+    <rect x="32" y="754" width="46" height="18" rx="6" fill="#EDF5E5"/>
+    <text x="55" y="767" text-anchor="middle" font-size="9.5" font-weight="600" fill="#63852E">云厂商</text>
+    <text x="86" y="768" font-size="10.2" fill="#526177">自研动力增强，短期仍难绕开英伟达软件生态</text>
+
+    <rect x="32" y="777" width="46" height="18" rx="6" fill="#EEF2F8"/>
+    <text x="55" y="790" text-anchor="middle" font-size="9.5" font-weight="600" fill="#64748B">挑战者</text>
+    <text x="86" y="791" font-size="10" fill="#526177">关键在于三星 / SK海力士 / 美光的芯片供应</text>
+
+    <line x1="20" y1="817" x2="370" y2="817" stroke="#E5EAEF"/>
+    <text x="20" y="832" font-size="9" fill="#96A2B2">来源：财联社｜注：价格为文中报价，VR200为出货前询价</text>
+  </g>
+</svg>
