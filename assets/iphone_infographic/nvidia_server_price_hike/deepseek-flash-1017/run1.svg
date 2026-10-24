@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif" text-rendering="geometricPrecision">
+  <defs>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#0F172A" flood-opacity="0.05"/>
+    </filter>
+    <linearGradient id="heroG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F4F9EF"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="390" height="844" fill="#F2F4F6"/>
+
+  <!-- 头部 -->
+  <text x="24" y="38" font-size="11" font-weight="600" fill="#8A94A0" letter-spacing="0.5">财联社 · 8月23日</text>
+  <text x="24" y="74" font-size="23" font-weight="700" fill="#141A21" letter-spacing="-0.2">英伟达服务器传出涨价消息</text>
+  <text x="24" y="106" font-size="14" font-weight="600" fill="#5A6472">涨幅</text>
+  <text x="58" y="106" font-size="14" font-weight="700" fill="#4A8B2C">“很多情况下超过15%”</text>
+
+  <!-- 核心数字卡片 -->
+  <rect x="20" y="128" width="350" height="122" rx="18" fill="url(#heroG)" stroke="#E3EDD9" stroke-width="1" filter="url(#sh)"/>
+  <text x="40" y="158" font-size="11.5" font-weight="600" fill="#8A94A0" letter-spacing="0.3">服务器涨幅</text>
+  <text x="34" y="218" font-size="50" font-weight="700" fill="#4A8B2C" letter-spacing="-1">&gt;15%</text>
+  <line x1="180" y1="152" x2="180" y2="228" stroke="#E6EEE0" stroke-width="1"/>
+  <text x="198" y="166" font-size="12.5" font-weight="600" fill="#3F4753">内存芯片成本飙升</text>
+  <text x="198" y="188" font-size="12.5" font-weight="600" fill="#3F4753">明年初起普遍提价</text>
+  <text x="198" y="216" font-size="11" fill="#9AA3AE">多个“最大客户”</text>
+  <text x="198" y="232" font-size="11" fill="#9AA3AE">已被告知涨价</text>
+
+  <!-- 适用芯片与生效时点 -->
+  <rect x="20" y="262" width="350" height="132" rx="18" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="40" y="290" font-size="11.5" font-weight="600" fill="#8A94A0" letter-spacing="0.3">适用芯片</text>
+  <text x="40" y="314" font-size="14" font-weight="700" fill="#141A21">Vera Rubin、Grace Blackwell</text>
+  <line x1="40" y1="336" x2="350" y2="336" stroke="#F0F3F6" stroke-width="1"/>
+  <text x="40" y="362" font-size="11.5" font-weight="600" fill="#8A94A0" letter-spacing="0.3">生效时点</text>
+  <text x="40" y="386" font-size="14" font-weight="700" fill="#141A21">明年年初起出货的系统</text>
+
+  <!-- 单机价格 -->
+  <text x="24" y="418" font-size="11" font-weight="600" fill="#9AA3AE" letter-spacing="0.3">单台报价 · 今年早些时候</text>
+
+  <rect x="20" y="426" width="168" height="106" rx="16" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="34" y="450" font-size="11.5" font-weight="600" fill="#8A94A0">GB200 NVL72</text>
+  <text x="34" y="468" font-size="10.5" fill="#B3BAC3">Blackwell 架构</text>
+  <text x="34" y="502" font-size="20" font-weight="700" fill="#141A21" letter-spacing="-0.5">280–340</text>
+  <text x="34" y="520" font-size="10.5" fill="#8A94A0">万美元 / 台</text>
+
+  <rect x="202" y="426" width="168" height="106" rx="16" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="216" y="450" font-size="11.5" font-weight="600" fill="#8A94A0">VR200 NVL72</text>
+  <text x="216" y="468" font-size="10.5" fill="#B3BAC3">Vera Rubin 架构</text>
+  <text x="216" y="502" font-size="20" font-weight="700" fill="#141A21" letter-spacing="-0.5">500–700</text>
+  <text x="216" y="520" font-size="10.5" fill="#8A94A0">万美元 / 台</text>
+
+  <!-- 财报与毛利率 -->
+  <rect x="20" y="540" width="350" height="110" rx="18" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="40" y="568" font-size="11.5" font-weight="600" fill="#8A94A0" letter-spacing="0.3">毛利率</text>
+  <text x="36" y="612" font-size="32" font-weight="700" fill="#141A21" letter-spacing="-0.5">75%</text>
+  <text x="40" y="634" font-size="10" fill="#9AA3AE">上财年同期 60.5%</text>
+  <line x1="190" y1="562" x2="190" y2="638" stroke="#F0F3F6" stroke-width="1"/>
+  <text x="200" y="568" font-size="11.5" font-weight="600" fill="#8A94A0" letter-spacing="0.3">财报发布</text>
+  <text x="200" y="606" font-size="17" font-weight="700" fill="#141A21">下周三</text>
+  <text x="200" y="628" font-size="11" fill="#5A6472">美股盘后</text>
+
+  <!-- 消费级显卡 -->
+  <rect x="20" y="662" width="350" height="78" rx="16" fill="#FFFFFF" filter="url(#sh)"/>
+  <text x="40" y="686" font-size="11.5" font-weight="600" fill="#8A94A0" letter-spacing="0.3">消费级显卡同步上涨</text>
+  <text x="40" y="714" font-size="15" font-weight="700" fill="#141A21">RTX 5080</text>
+  <text x="196" y="688" font-size="11" fill="#9AA3AE">一个月前 8000 元</text>
+  <text x="196" y="714" font-size="13" font-weight="700" fill="#C0552E">现在 1.2 万元</text>
+
+  <!-- 行业影响 -->
+  <rect x="20" y="752" width="350" height="78" rx="18" fill="#ECF3E7"/>
+  <text x="40" y="780" font-size="12" font-weight="700" fill="#3E5B33">云厂商加速推进自研芯片</text>
+  <text x="40" y="804" font-size="12" fill="#5A6472">但英伟达软件生态仍是“护城河”</text>
+</svg>
